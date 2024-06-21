@@ -5,5 +5,5 @@ Wenn man das Python script startet öffnet sich das terminal und es wird eine ge
 
 You need Python 3.11 to run it.
 
-# life-game-fantasy-de
+# life-game-fantasy-de Henry Addon
 Es Gibt Tanks
