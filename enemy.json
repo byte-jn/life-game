@@ -1,0 +1,4 @@
+[
+    {"name": "Zombie","alter": 1,"attack-s": 30,"leben": 10,"waffe": "hau auf"},
+    {"name": "Herry","alter": 1,"attack-s": 20,"leben": 100,"waffe": "agummentiert auf"}
+]
