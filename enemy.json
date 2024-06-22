@@ -1,0 +1,6 @@
+[
+    {"name": "Tank","alter": 5,"attack-s": 800,"leben": 1000,"waffe": "ballert AP-Kugel auf"},
+    {"name": "Zug","alter": 7,"attack-s": 2800,"leben": 2000,"waffe": "rushed auf"},
+    {"name": "Zombie","alter": 1,"attack-s": 30,"leben": 10,"waffe": "hau auf"},
+    {"name": "Herry","alter": 1,"attack-s": 20,"leben": 100,"waffe": "agummentiert auf"}
+]
