@@ -232,7 +232,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         print(goblin["name"] + " ist gestorben er war " + str(goblin["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                         c = int(float(10) / float(die*dieten) + 1)
-                        goblin = {"name": "einen Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(c,1),"leben": 20,}
+                        goblin = {"name": "einen Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(c,2),"leben": 20,}
                         goblin = {"name": goblin["name"],"alter": goblin ["alter"],"attack-s": goblin["attack-s"],"leben": goblin["leben"],"waffe": str(lg.weaponsget(goblin["attack-s"]))}
                         print(" ")
                         print(" ")
@@ -244,7 +244,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         print(mensch["name"] + " ist gestorben er war " + str(mensch["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                         c = int(float(10) / float(die*dieten) + 1)
-                        mensch = {"name": "Mensch","alter": rd.randint(25,39),"attack-s": lg.weaponsgetdmg(c,1),"leben": 100}
+                        mensch = {"name": "Mensch","alter": rd.randint(25,39),"attack-s": lg.weaponsgetdmg(c,2),"leben": 100}
                         mensch = {"name": mensch["name"],"alter": mensch["alter"],"attack-s": mensch["attack-s"],"leben": mensch["leben"],"waffe": str(lg.weaponsget(mensch["attack-s"]))}
                         print(" ")
                         print(" ") 
@@ -256,7 +256,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         print(magier["name"] + " ist gestorben er war " + str(magier["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                         c = int(float(10) / float(die*dieten) + 1)
-                        magier = {"name": "Magier","alter": rd.randint(50,90),"attack-s": lg.weaponsgetdmg(c,1),"leben": 130}
+                        magier = {"name": "Magier","alter": rd.randint(50,90),"attack-s": lg.weaponsgetdmg(c,2),"leben": 130}
                         magier = {"name": magier["name"],"alter": magier["alter"],"attack-s": magier["attack-s"],"leben": magier["leben"],"waffe": str(lg.weaponsget(magier["attack-s"]))}
                         print(" ")
                         print(" ")
@@ -268,7 +268,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         print(demon["name"] + " ist gestorben er war " + str(demon["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                         c = int(float(10) / float(die*dieten) + 1)
-                        demon = {"name": "Dämon","alter": rd.randint(102,620),"attack-s": lg.weaponsgetdmg(c,1),"leben": 200,}
+                        demon = {"name": "Dämon","alter": rd.randint(102,620),"attack-s": lg.weaponsgetdmg(c,2),"leben": 200,}
                         demon = {"name": demon["name"],"alter": demon ["alter"],"attack-s": demon["attack-s"],"leben": demon["leben"],"waffe": str(lg.weaponsget(demon["attack-s"]))}
                         print(" ")
                         print(" ")
@@ -280,7 +280,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         print(chicken["name"] + " ist gestorben er war " + str(chicken["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                         c = int(float(10) / float(die*dieten) + 1)
-                        chicken = {"name": "Huhn","alter": rd.randint(0,3),"attack-s": lg.weaponsgetdmg(c,1),"leben": 5,}
+                        chicken = {"name": "Huhn","alter": rd.randint(0,3),"attack-s": lg.weaponsgetdmg(c,2),"leben": 5,}
                         chicken = {"name": chicken["name"],"alter": chicken ["alter"],"attack-s": chicken["attack-s"],"leben": chicken["leben"],"waffe": str(lg.weaponsget(chicken["attack-s"]))}
                         print(" ")
                         print(" ")
