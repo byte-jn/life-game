@@ -126,6 +126,13 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
             return gegner #Alle wichtigen Infos vom gegner zurück geben
+
+lg = LifeGameMain #class in eine einfache Variable packen um darauf einfach zugreifen zu können
+
+print("Gebe einen Namen ein... ")
+name = input()
+print(" ")
+
 print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
 m = input("Stärke = ")
 if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
@@ -169,8 +176,8 @@ else:
     l = 2
     m = "d"
 
-lg = LifeGameMain #class in eine einfache Variable packen um darauf einfach zugreifen zu können
-player1 = {"name": "Harald","alter": 0,"attack-s": lg.weaponsgetdmg(n,b),"leben": 200*l}
+
+player1 = {"name": name,"alter": 0,"attack-s": lg.weaponsgetdmg(n,b),"leben": 200*l}
 player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
 mensch = {"name": "Mensch","alter": rd.randint(25,39),"attack-s": lg.weaponsgetdmg(10,2),"leben": 100}
 mensch = {"name": mensch["name"],"alter": mensch["alter"],"attack-s": mensch["attack-s"],"leben": mensch["leben"],"waffe": str(lg.weaponsget(mensch["attack-s"]))}
