@@ -2,5 +2,10 @@
     {"name": "Tank","alter": 5,"attack-s": 800,"leben": 1000,"waffe": "ballert AP-Kugel auf"},
     {"name": "Zug","alter": 7,"attack-s": 2800,"leben": 2000,"waffe": "rushed auf"},
     {"name": "Zombie","alter": 1,"attack-s": 30,"leben": 10,"waffe": "haut auf"},
-    {"name": "Herry","alter": 1,"attack-s": 20,"leben": 100,"waffe": "agummentiert auf"}
+    {"name": "Herry","alter": 1,"attack-s": 20,"leben": 100,"waffe": "agummentiert auf"},
+    {"name": "Pinguin","alter": 2,"attack-s": 60,"leben": 20,"waffe": "legt Exposives Ei auf"},
+    {"name": "Pelikan","alter": 1,"attack-s": 5,"leben": 20,"waffe": "isst"},
+    {"name": "Satelit","alter": 1,"attack-s": 2000,"leben": 200,"waffe": "schies-zt Orbitallaser auf"},
+    {"name": "Daniel","alter": 1,"attack-s": 40,"leben": 700,"waffe": "Gravitationsfeld wirkt auf"},
+    {"name": "McDonalds Mitarbeiter","alter": 1,"attack-s": 7,"leben": 2,"waffe": "lehnt bestellung ab und verbreitet trauer auf"}
 ]
