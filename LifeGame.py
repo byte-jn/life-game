@@ -151,13 +151,18 @@ print(" ")
 
 print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
 m = input("Stärke = ")
-if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
+if m in {"dev","sun","s", "a", "b", "c", "d", "e", "f"}:
     match m:
         case "dev": 
             n = 1
             b = 1
             l = 1000
             standartwartezeit = 0.2
+        case "sun": 
+            n = -100
+            b = -100
+            l = 1000
+            standartwartezeit = 1
         case "s": 
             n = 1
             b = 5
@@ -392,7 +397,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         b = 20
                         l = 0.75
         
-        player1 = {"name": "Harald","alter": 0,"attack-s": lg.weaponsgetdmg(n,b),"leben": 200*l}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["leben"]*l}
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
     time.sleep(standartwartezeit)
 
