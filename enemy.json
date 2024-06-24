@@ -1,6 +1,6 @@
 [
-    {"name": "Zombie","alter": 1,"attack-s": 30,"leben": 10,"waffe": "hau auf"},
-    {"name": "Tiger","alter": 1,"attack-s": 30,"leben": 100,"waffe": "schlägt"},
-    {"name": "Elefant","alter": 1,"attack-s": 60,"leben": 130,"waffe": "schlägt mit seinem Rüssel auf"},
+    {"name": "Zombie","alter": 1,"attack-s": 30,"leben": 10,"waffe": "beis-zt"},
+    {"name": "Tiger","alter": 1,"attack-s": 30,"leben": 100,"waffe": "schla-egt"},
+    {"name": "Elefant","alter": 1,"attack-s": 60,"leben": 130,"waffe": "schla-egt mit seinem Rüssel auf"},
     {"name": "Drache","alter": 1,"attack-s": 50,"leben": 500,"waffe": "feuert auf"}
 ]
