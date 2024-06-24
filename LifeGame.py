@@ -128,13 +128,13 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             return gegner #Alle wichtigen Infos vom gegner zurück geben
         def replace_umlauts(data):
             if isinstance(data, str):
-                data = (data.replace("A-e", "Ä")
-                            .replace("a-e", "ä")
-                            .replace("O-e", "Ö")
-                            .replace("o-e", "ö")
-                            .replace("U-e", "Ü")
-                            .replace("u-e", "ü")
-                            .replace("s-z", "ß"))
+                data = (data.replace("(Ae)", "Ä")
+                            .replace("(ae)", "ä")
+                            .replace("(Oe)", "Ö")
+                            .replace("(oe)", "ö")
+                            .replace("(Ue)", "Ü")
+                            .replace("(ue)", "ü")
+                            .replace("(sz)", "ß"))
             elif isinstance(data, dict):
                 for key, value in data.items():
                     data[key] = lg.replace_umlauts(value)
