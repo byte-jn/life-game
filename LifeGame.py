@@ -98,7 +98,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     x = "warf die Sonne auf"
             return x #Den coolen satz zurückgeben
         def fight(gegner,die):#Der Kampf
-            if die > rd.randint(20,101):
+            if die > rd.randint(50,1001):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print("Gegner hat sich als Dämonenkönig entpupt")
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
@@ -396,7 +396,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         b = 20
                         l = 0.75
         
-        player1 = {"name": "Harald","alter": 0,"attack-s": lg.weaponsgetdmg(n,b),"leben": 200*l}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["alter"]*l}
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
     time.sleep(standartwartezeit)
 
