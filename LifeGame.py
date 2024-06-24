@@ -227,6 +227,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     player1["alter"] += 1
 
 
+    verb = [" geht", " läuft", " springt", " wandert", " sprintet"]
+
     #addons
     f = open("enemy.json")
     enemylist = json.load(f)
@@ -239,12 +241,14 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
 
     if rd.randint(1,2) == 2:
         location = rd.choice(locationslist)
-        print(player1["name"] + location["info"])
+        verb = rd.choice(verb)
+        print(player1["name"] + verb + location["info"])
     else:
         enemy = rd.choice(enemylist)
-        bodylocationslist = [" läuft an totem " + enemy["name"] + " vorbei", " läuft an totem " + goblin["name"] + " vorbei", " läuft an totem " + mensch["name"] + " vorbei", " läuft an totem " + magier["name"] + " vorbei", " läuft an totem " + demon["name"] + " vorbei", " läuft an totem " + chicken["name"] + " vorbei", " läuft an einem " + enemy["name"] + " vorbei", " läuft an einem " + goblin["name"] + " vorbei", " läuft an einem " + mensch["name"] + " vorbei", " läuft an einem " + magier["name"] + " vorbei", " läuft an einem " + demon["name"] + " vorbei", " läuft an einem " + chicken["name"] + " vorbei"] 
+        verb = rd.choice(verb)
+        bodylocationslist = [" an totem " + enemy["name"] + " vorbei", " an totem " + goblin["name"] + " vorbei", " an totem " + mensch["name"] + " vorbei", " an totem " + magier["name"] + " vorbei", " an totem " + demon["name"] + " vorbei", " an totem " + chicken["name"] + " vorbei", " an einem " + enemy["name"] + " vorbei", " an einem " + goblin["name"] + " vorbei", " an einem " + mensch["name"] + " vorbei", " an einem " + magier["name"] + " vorbei", " an einem " + demon["name"] + " vorbei", " an einem " + chicken["name"] + " vorbei"] 
         bodylocation = rd.choice(bodylocationslist)
-        print(player1["name"] + bodylocation)
+        print(player1["name"] + verb + bodylocation)
     print("")
     print("")
     time.sleep(standartwartezeit)
