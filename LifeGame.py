@@ -104,7 +104,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
-            if automode != "a":
+            if automode != "e":
                 print("")
                 print("")
                 time.sleep(2)
@@ -238,7 +238,8 @@ else:
 print("")
 print("Automode lässt dich automatisch kämpfen und nicht auswählen was du machen willst.")
 print("Bei Eingabe kannst du auswählen ob du fliehen willst oder kämpfen möchtest und mehr.")
-automode = input("Automode (a) / Eingabe (e)")
+print("Automode (a) / Eingabe (e)...")
+automode = input("Mode = ")
 
 player1 = {"name": name,"alter": 0,"attack-s": lg.weaponsgetdmg(n,b),"leben": 200*l}
 player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
@@ -275,7 +276,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     player1["alter"] += 1
 
 
-    verb = [" geht", " läuft", " springt", " wandert", " sprintet", "läuft vorsichtig", ""]
+    verb = [" geht", " läuft", " springt", " wandert", " sprintet", " läuft vorsichtig", " fliegt", " geht erneut", " taucht", " klettert", " gräbt sich", " bohrt sich", " fällt"]
 
     #addons
     f = open("enemy.json")
