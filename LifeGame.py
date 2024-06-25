@@ -276,7 +276,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     player1["alter"] += 1
 
 
-    verb = [" geht", " läuft", " springt", " wandert", " sprintet", " läuft vorsichtig", " fliegt", " geht erneut", " taucht", " klettert", " gräbt sich", " bohrt sich", " fällt", " kackt", ""]
+    verb = [" geht", " läuft", " springt", " wandert", " sprintet", " läuft vorsichtig", " fliegt", " geht erneut", " taucht", " klettert", " gräbt sich", " bohrt sich", " fällt", " kackt"]
 
     #addons
     f = open("enemy.json")
