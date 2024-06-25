@@ -396,7 +396,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         b = 20
                         l = 0.75
         
-        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["alter"]*l}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["leben"]*l}
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
     time.sleep(standartwartezeit)
 
