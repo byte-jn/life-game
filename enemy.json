@@ -5,7 +5,7 @@
     {"name": "Herry","alter": 1,"attack-s": 20,"leben": 100,"waffe": "agummentiert auf"},
     {"name": "Pinguin","alter": 2,"attack-s": 60,"leben": 20,"waffe": "legt Exposives Ei auf"},
     {"name": "Pelikan","alter": 1,"attack-s": 5,"leben": 20,"waffe": "isst"},
-    {"name": "Satelit","alter": 1,"attack-s": 2000,"leben": 200,"waffe": "schies-zt Orbitallaser auf"},
+    {"name": "Satelit","alter": 1,"attack-s": 2000,"leben": 200,"waffe": "schie(sz)t Orbitallaser auf"},
     {"name": "Daniel","alter": 1,"attack-s": 40,"leben": 700,"waffe": "Gravitationsfeld wirkt auf"},
     {"name": "McDonalds Mitarbeiter","alter": 1,"attack-s": 7,"leben": 2,"waffe": "lehnt bestellung ab und verbreitet trauer auf"}
 ]
