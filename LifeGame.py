@@ -98,7 +98,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     x = "warf die Sonne auf"
             return x #Den coolen satz zurückgeben
         def fight(gegner,die):#Der Kampf
-            if die > rd.randint(20,101):
+            if die > rd.randint(50,1001):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print("Gegner hat sich als Dämonenkönig entpupt")
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
@@ -128,13 +128,13 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             return gegner #Alle wichtigen Infos vom gegner zurück geben
         def replace_umlauts(data):
             if isinstance(data, str):
-                data = (data.replace("A-e", "Ä")
-                            .replace("a-e", "ä")
-                            .replace("O-e", "Ö")
-                            .replace("o-e", "ö")
-                            .replace("U-e", "Ü")
-                            .replace("u-e", "ü")
-                            .replace("s-z", "ß"))
+                data = (data.replace("(Ae)", "Ä")
+                            .replace("(ae)", "ä")
+                            .replace("(Oe)", "Ö")
+                            .replace("(oe)", "ö")
+                            .replace("(Ue)", "Ü")
+                            .replace("(ue)", "ü")
+                            .replace("(sz)", "ß"))
             elif isinstance(data, dict):
                 for key, value in data.items():
                     data[key] = lg.replace_umlauts(value)
@@ -151,18 +151,13 @@ print(" ")
 
 print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
 m = input("Stärke = ")
-if m in {"dev","sun","s", "a", "b", "c", "d", "e", "f"}:
+if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
     match m:
         case "dev": 
             n = 1
             b = 1
             l = 1000
             standartwartezeit = 0.2
-        case "sun": 
-            n = -100
-            b = -100
-            l = 1000
-            standartwartezeit = 1
         case "s": 
             n = 1
             b = 5
@@ -232,6 +227,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     player1["alter"] += 1
 
 
+    verb = [" geht", " läuft", " springt", " wandert", " sprintet"]
+
     #addons
     f = open("enemy.json")
     enemylist = json.load(f)
@@ -244,12 +241,14 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
 
     if rd.randint(1,2) == 2:
         location = rd.choice(locationslist)
-        print(player1["name"] + location["info"])
+        verb = rd.choice(verb)
+        print(player1["name"] + verb + location["info"])
     else:
         enemy = rd.choice(enemylist)
-        bodylocationslist = [" läuft an totem " + enemy["name"] + " vorbei", " läuft an totem " + goblin["name"] + " vorbei", " läuft an totem " + mensch["name"] + " vorbei", " läuft an totem " + magier["name"] + " vorbei", " läuft an totem " + demon["name"] + " vorbei", " läuft an totem " + chicken["name"] + " vorbei", " läuft an einem " + enemy["name"] + " vorbei", " läuft an einem " + goblin["name"] + " vorbei", " läuft an einem " + mensch["name"] + " vorbei", " läuft an einem " + magier["name"] + " vorbei", " läuft an einem " + demon["name"] + " vorbei", " läuft an einem " + chicken["name"] + " vorbei"] 
+        verb = rd.choice(verb)
+        bodylocationslist = [" an totem " + enemy["name"] + " vorbei", " an totem " + goblin["name"] + " vorbei", " an totem " + mensch["name"] + " vorbei", " an totem " + magier["name"] + " vorbei", " an totem " + demon["name"] + " vorbei", " an totem " + chicken["name"] + " vorbei", " an einem " + enemy["name"] + " vorbei", " an einem " + goblin["name"] + " vorbei", " an einem " + mensch["name"] + " vorbei", " an einem " + magier["name"] + " vorbei", " an einem " + demon["name"] + " vorbei", " an einem " + chicken["name"] + " vorbei"] 
         bodylocation = rd.choice(bodylocationslist)
-        print(player1["name"] + bodylocation)
+        print(player1["name"] + verb + bodylocation)
     print("")
     print("")
     time.sleep(standartwartezeit)
@@ -397,7 +396,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         b = 20
                         l = 0.75
         
-        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["leben"]*l}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["alter"]*l}
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"],"leben": player1["leben"],"waffe": str(lg.weaponsget(player1["attack-s"]))}
     time.sleep(standartwartezeit)
 
