@@ -104,7 +104,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
-            if automode != "a":
+            if automode == "a":
                 print("")
                 print("")
                 time.sleep(2)
@@ -155,7 +155,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     player1["leben"] = player1["leben"] - dmg
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
-            if automode != "a":
+            if automode == "a":
                 if f == "a":
                     player1["attack-s"] = player1["attack-s"] / 1.2
                 elif f == "h": 
