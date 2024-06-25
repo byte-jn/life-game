@@ -97,14 +97,39 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                 case 1000000000:
                     x = "warf die Sonne auf"
             return x #Den coolen satz zurückgeben
-        def fight(gegner,die):#Der Kampf
+        def fight(n,b,player1,gegner,die):#Der Kampf
             if die > rd.randint(50,1001):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print("Gegner hat sich als Dämonenkönig entpupt")
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
+            print("")
+            print("")
+            time.sleep(2)
+            print("Anfeuern gibt dem Helden eine größere Chance anzufangen, aber der gegner macht 2% mehr schaden")
+            print("fliehen (f) / kämpfen (k) / anfeuern (a) / Waffetausch (w)")
+            f = input()
+            print("")
+            if f == "f": 
+                print("")
+                print(player1["name"] + " flieht vor " + gegner["name"])
+                print("")
+                print("")
+                return gegner
+            elif f == "a":
+                gegner["attack-s"] = int(float(gegner["attack-s"]) * 1.2)
+                if rd.randint (1,3) == 1:
+                    xs = False
+                else:
+                    xs = True
+            elif f == "w":
+                player1["attack-s"] = lg.weaponsgetdmg(n,b)
+                player1["waffe"] = lg.weaponsget(player1["attack-s"])
+                print(player1["name"] + " hat jetzt eine neue Waffe")
+                print("")
             if die < 1: xs = True
+            print("")
             while True:#Loop bis Jemand tod ist
                 if gegner["leben"] < 1:#Wer gewonnen/verloren hat
                     print(player1["name"] + " hat gegen " + gegner["name"] + " gewonnen")
@@ -125,6 +150,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     player1["leben"] = player1["leben"] - dmg
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
+            
             return gegner #Alle wichtigen Infos vom gegner zurück geben
         def replace_umlauts(data):
             if isinstance(data, str):
@@ -154,39 +180,48 @@ m = input("Stärke = ")
 if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
     match m:
         case "dev": 
+            r = 10
             n = 1
             b = 1
             l = 1000
             standartwartezeit = 0.2
         case "s": 
+            r = 7
             n = 1
             b = 5
             l = 10
         case "a": 
+            r = 6
             n = 2
-            b = 7
+            b = 6
             l = 5
         case "b": 
+            r = 5
             n = 4
             b = 7
             l = 2
         case "c": 
+            r = 4
             n = 5
             b = 10
             l = 1.5
         case "d": 
-            n = 7
+            r = 3
+            n = 6
             b = 12
             l = 1.25
         case "e": 
-            n = 8
+            r = 2
+            n = 7
             b = 15
             l = 1
         case "f": 
-            n = 10
-            b = 19
+            r = 1
+            n = 9
+            b = 17
             l = 0.75
 else:
+    r = 3
     n = 20
     b = 1
     l = 2
@@ -200,9 +235,9 @@ magier = {"name": "Magier","alter": rd.randint(50,90),"attack-s": lg.weaponsgetd
 magier = {"name": magier["name"],"alter": magier["alter"],"attack-s": magier["attack-s"],"leben": magier["leben"],"waffe": str(lg.weaponsget(magier["attack-s"]))}
 demon = {"name": "Dämon","alter": rd.randint(102,620),"attack-s": lg.weaponsgetdmg(5,2),"leben": 200,}
 demon = {"name": demon["name"],"alter": demon ["alter"],"attack-s": demon["attack-s"],"leben": demon["leben"],"waffe": str(lg.weaponsget(demon["attack-s"]))}
-goblin = {"name": "Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(20,2),"leben": 20,}
+goblin = {"name": "Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(20,7),"leben": 20,}
 goblin = {"name": goblin["name"],"alter": goblin ["alter"],"attack-s": goblin["attack-s"],"leben": goblin["leben"],"waffe": str(lg.weaponsget(goblin["attack-s"]))}
-chicken = {"name": "Huhn","alter": rd.randint(1,4),"attack-s": lg.weaponsgetdmg(15,2),"leben": 5,}
+chicken = {"name": "Huhn","alter": rd.randint(1,4),"attack-s": lg.weaponsgetdmg(15,9),"leben": 5,}
 chicken = {"name": chicken["name"],"alter": chicken ["alter"],"attack-s": chicken["attack-s"],"leben": chicken["leben"],"waffe": str(lg.weaponsget(chicken["attack-s"]))}
 moa = {"name": "Moa (der Dämonenkönig)","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
 
@@ -253,80 +288,107 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     print("")
     time.sleep(standartwartezeit)
 
-    if rd.randint(1,16) < 10:
-        if rd.randint(1,5) != 2:
-            match rd.randint(1,5):#Zufälliges Ereignis
-                case 1: #Kampf mit Goblin
+    if rd.randint(r,12) > 10:
+        if r < 4:
+            match rd.randint(1,2):#Zufälliges Ereignis
+                    case 1: #Kampf mit Goblin
+                        time.sleep(standartwartezeit)
+                        goblin = lg.fight(n,b,player1,goblin,die*dieten)
+                        goblin1 = goblin
+                        if goblin["leben"] < 1:#Goblin Wiederbelebung und Verbesserung
+                            print(goblin["name"] + " ist gestorben er war " + str(goblin["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            goblin = {"name": "einen Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(c,2),"leben": 20,}
+                            goblin = {"name": goblin["name"],"alter": goblin ["alter"],"attack-s": goblin["attack-s"],"leben": goblin["leben"],"waffe": str(lg.weaponsget(goblin["attack-s"]))}
+                            print(" ")
+                            print(" ")
+                    case 5: #Kampf mit Huhns
+                        time.sleep(standartwartezeit)
+                        chicken = lg.fight(n,b,player1,chicken,die*dieten)
+                        goblin1 = chicken
+                        if chicken["leben"] < 1:#Huhn Wiederbelebung und Verbesserung
+                            print(chicken["name"] + " ist gestorben er war " + str(chicken["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            chicken = {"name": "Huhn","alter": rd.randint(0,3),"attack-s": lg.weaponsgetdmg(c,2),"leben": 5,}
+                            chicken = {"name": chicken["name"],"alter": chicken ["alter"],"attack-s": chicken["attack-s"],"leben": chicken["leben"],"waffe": str(lg.weaponsget(chicken["attack-s"]))}
+                            print(" ")
+                            print(" ")
+        else:
+            if rd.randint(1,5) != 2:
+                match rd.randint(1,5):#Zufälliges Ereignis
+                    case 1: #Kampf mit Goblin
+                        time.sleep(standartwartezeit)
+                        goblin = lg.fight(n,b,player1,goblin,die*dieten)
+                        goblin1 = goblin
+                        if goblin["leben"] < 1:#Goblin Wiederbelebung und Verbesserung
+                            print(goblin["name"] + " ist gestorben er war " + str(goblin["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            goblin = {"name": "einen Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(c,2),"leben": 20,}
+                            goblin = {"name": goblin["name"],"alter": goblin ["alter"],"attack-s": goblin["attack-s"],"leben": goblin["leben"],"waffe": str(lg.weaponsget(goblin["attack-s"]))}
+                            print(" ")
+                            print(" ")
+                    case 2: #Kampf mit Mensch
+                        time.sleep(standartwartezeit)
+                        mensch = lg.fight(n,b,player1,mensch,die*dieten)
+                        goblin1 = mensch
+                        if mensch["leben"] < 1:#Mensch Wiederbelebung und Verbesserung
+                            print(mensch["name"] + " ist gestorben er war " + str(mensch["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            mensch = {"name": "Mensch","alter": rd.randint(25,39),"attack-s": lg.weaponsgetdmg(c,2),"leben": 100}
+                            mensch = {"name": mensch["name"],"alter": mensch["alter"],"attack-s": mensch["attack-s"],"leben": mensch["leben"],"waffe": str(lg.weaponsget(mensch["attack-s"]))}
+                            print(" ")
+                            print(" ") 
+                    case 3: #Kampf mit Magier
+                        time.sleep(standartwartezeit)
+                        magier = lg.fight(n,b,player1,magier,die*dieten)
+                        goblin1 = magier
+                        if magier["leben"] < 1:#Magier Wiederbelebung und Verbesserung
+                            print(magier["name"] + " ist gestorben er war " + str(magier["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            magier = {"name": "Magier","alter": rd.randint(50,90),"attack-s": lg.weaponsgetdmg(c,2),"leben": 130}
+                            magier = {"name": magier["name"],"alter": magier["alter"],"attack-s": magier["attack-s"],"leben": magier["leben"],"waffe": str(lg.weaponsget(magier["attack-s"]))}
+                            print(" ")
+                            print(" ")
+                    case 4: #Kampf mit Demon
+                        time.sleep(standartwartezeit)
+                        demon = lg.fight(n,b,player1,demon,die*dieten)
+                        goblin1 = demon
+                        if demon["leben"] < 1:#Demon Wiederbelebung und Verbesserung
+                            print(demon["name"] + " ist gestorben er war " + str(demon["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            demon = {"name": "Dämon","alter": rd.randint(102,620),"attack-s": lg.weaponsgetdmg(c,2),"leben": 200,}
+                            demon = {"name": demon["name"],"alter": demon ["alter"],"attack-s": demon["attack-s"],"leben": demon["leben"],"waffe": str(lg.weaponsget(demon["attack-s"]))}
+                            print(" ")
+                            print(" ")
+                    case 5: #Kampf mit Huhns
+                        time.sleep(standartwartezeit)
+                        chicken = lg.fight(n,b,player1,chicken,die*dieten)
+                        goblin1 = chicken
+                        if chicken["leben"] < 1:#Huhn Wiederbelebung und Verbesserung
+                            print(chicken["name"] + " ist gestorben er war " + str(chicken["alter"]) + " Jahre alt")
+                            die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            c = int(float(10) / float(die*dieten) + 1)
+                            chicken = {"name": "Huhn","alter": rd.randint(0,3),"attack-s": lg.weaponsgetdmg(c,2),"leben": 5,}
+                            chicken = {"name": chicken["name"],"alter": chicken ["alter"],"attack-s": chicken["attack-s"],"leben": chicken["leben"],"waffe": str(lg.weaponsget(chicken["attack-s"]))}
+                            print(" ")
+                            print(" ")
+            else: #Random Kampf
                     time.sleep(standartwartezeit)
-                    goblin = lg.fight(goblin,die*dieten)
-                    goblin1 = goblin
-                    if goblin["leben"] < 1:#Goblin Wiederbelebung und Verbesserung
-                        print(goblin["name"] + " ist gestorben er war " + str(goblin["alter"]) + " Jahre alt")
+                    enemy = rd.choice(enemylist)
+                    enemy["alter"] = rd.randint(5,150)
+                    enemy = lg.fight(n,b,player1,enemy,die*dieten)
+                    goblin1 = enemy
+                    if enemy["leben"] < 1:#Tank Wiederbelebung und Verbesserung
+                        print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
                         die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                        c = int(float(10) / float(die*dieten) + 1)
-                        goblin = {"name": "einen Goblin","alter": rd.randint(4,15),"attack-s": lg.weaponsgetdmg(c,2),"leben": 20,}
-                        goblin = {"name": goblin["name"],"alter": goblin ["alter"],"attack-s": goblin["attack-s"],"leben": goblin["leben"],"waffe": str(lg.weaponsget(goblin["attack-s"]))}
                         print(" ")
                         print(" ")
-                case 2: #Kampf mit Mensch
-                    time.sleep(standartwartezeit)
-                    mensch = lg.fight(mensch,die*dieten)
-                    goblin1 = mensch
-                    if mensch["leben"] < 1:#Mensch Wiederbelebung und Verbesserung
-                        print(mensch["name"] + " ist gestorben er war " + str(mensch["alter"]) + " Jahre alt")
-                        die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                        c = int(float(10) / float(die*dieten) + 1)
-                        mensch = {"name": "Mensch","alter": rd.randint(25,39),"attack-s": lg.weaponsgetdmg(c,2),"leben": 100}
-                        mensch = {"name": mensch["name"],"alter": mensch["alter"],"attack-s": mensch["attack-s"],"leben": mensch["leben"],"waffe": str(lg.weaponsget(mensch["attack-s"]))}
-                        print(" ")
-                        print(" ") 
-                case 3: #Kampf mit Magier
-                    time.sleep(standartwartezeit)
-                    magier = lg.fight(magier,die*dieten)
-                    goblin1 = magier
-                    if magier["leben"] < 1:#Magier Wiederbelebung und Verbesserung
-                        print(magier["name"] + " ist gestorben er war " + str(magier["alter"]) + " Jahre alt")
-                        die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                        c = int(float(10) / float(die*dieten) + 1)
-                        magier = {"name": "Magier","alter": rd.randint(50,90),"attack-s": lg.weaponsgetdmg(c,2),"leben": 130}
-                        magier = {"name": magier["name"],"alter": magier["alter"],"attack-s": magier["attack-s"],"leben": magier["leben"],"waffe": str(lg.weaponsget(magier["attack-s"]))}
-                        print(" ")
-                        print(" ")
-                case 4: #Kampf mit Demon
-                    time.sleep(standartwartezeit)
-                    demon = lg.fight(demon,die*dieten)
-                    goblin1 = demon
-                    if demon["leben"] < 1:#Demon Wiederbelebung und Verbesserung
-                        print(demon["name"] + " ist gestorben er war " + str(demon["alter"]) + " Jahre alt")
-                        die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                        c = int(float(10) / float(die*dieten) + 1)
-                        demon = {"name": "Dämon","alter": rd.randint(102,620),"attack-s": lg.weaponsgetdmg(c,2),"leben": 200,}
-                        demon = {"name": demon["name"],"alter": demon ["alter"],"attack-s": demon["attack-s"],"leben": demon["leben"],"waffe": str(lg.weaponsget(demon["attack-s"]))}
-                        print(" ")
-                        print(" ")
-                case 5: #Kampf mit Huhns
-                    time.sleep(standartwartezeit)
-                    chicken = lg.fight(chicken,die*dieten)
-                    goblin1 = chicken
-                    if chicken["leben"] < 1:#Huhn Wiederbelebung und Verbesserung
-                        print(chicken["name"] + " ist gestorben er war " + str(chicken["alter"]) + " Jahre alt")
-                        die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                        c = int(float(10) / float(die*dieten) + 1)
-                        chicken = {"name": "Huhn","alter": rd.randint(0,3),"attack-s": lg.weaponsgetdmg(c,2),"leben": 5,}
-                        chicken = {"name": chicken["name"],"alter": chicken ["alter"],"attack-s": chicken["attack-s"],"leben": chicken["leben"],"waffe": str(lg.weaponsget(chicken["attack-s"]))}
-                        print(" ")
-                        print(" ")
-        else: #Random Kampf
-                time.sleep(standartwartezeit)
-                enemy = rd.choice(enemylist)
-                enemy["alter"] = rd.randint(5,150)
-                enemy = lg.fight(enemy,die*dieten)
-                goblin1 = enemy
-                if enemy["leben"] < 1:#Tank Wiederbelebung und Verbesserung
-                    print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
-                    die += 1 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                    print(" ")
-                    print(" ")
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
             if player1["leben"] < 1000:
@@ -336,6 +398,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
         print("Level Up")
         dieten += 1
         die = 1
+        r += 1
         if m == "f":
             m = "e"
         elif m == "e":
@@ -354,46 +417,56 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
             m = "sss"
         elif m == "sss":
             print(player1["name"] + "ist jetzt auf dem maximalem Level")
+            r = 10
             n = -100
             b = -100
             l = 1000000
         else:
             match m:
                     case "sss": 
+                        r = 9
                         n = 1
                         b = 1
                         l = 1000
                     case "ss": 
+                        r = 8
                         n = 1
                         b = 1
                         l = 100
                     case "s": 
+                        r = 7
                         n = 1
                         b = 5
                         l = 10
                     case "a": 
+                        r = 6
                         n = 2
                         b = 7
                         l = 5
                     case "b": 
+                        r = 5
                         n = 4
                         b = 7
                         l = 2
                     case "c": 
+                        r = 4
                         n = 5
                         b = 10
                         l = 1.5
                     case "d": 
+                        r = 3
                         n = 7
                         b = 12
                         l = 1.25
                     case "e": 
-                        n = 10
+                        r = 2
+                        n = 8
                         b = 15
                         l = 1
                     case "f": 
+                        r = 1
                         n = 10
-                        b = 20
+                        b = 19
                         l = 0.75
         
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": lg.weaponsgetdmg(n,b),"leben": player1["leben"]*l}
