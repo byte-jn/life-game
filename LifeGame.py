@@ -7,6 +7,8 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             with open("weapondmg.json") as f:
                 weapon_data = json.load(f)
                 weaponlist = weapon_data[0]  # Access the dictionary within the list
+            
+            weaponlist = lg.replace_umlauts(weaponlist)
 
             if object1["rank"] < 11:
                 weapon_rank_key = f"r{object1['rank']}"
@@ -38,7 +40,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
-            if automode == "a":
+            if automode == "e":
                 print("")
                 print("")
                 time.sleep(2)
@@ -88,7 +90,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     player1["leben"] = player1["leben"] - dmg
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
-            if automode == "a":
+            if automode == "e":
                 if f == "a":
                     player1["attack-s"] = player1["attack-s"] / 1.2
                 elif f == "h": 
@@ -119,36 +121,42 @@ print(" ")
 
 print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
 m = input("Stärke = ")
-if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
+if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
     match m:
         case "dev": 
             r = 10
-            l = 1000
-            standartwartezeit = 0.2
+            l = 1000000
+            standartwartezeit = 0.5
+        case "sss": 
+            r = 9
+            l = 26275
+        case "ss": 
+            r = 8
+            l = 2145
         case "s": 
             r = 7
-            l = 10
+            l = 275
         case "a": 
             r = 6
-            l = 5
+            l = 25
         case "b": 
             r = 5
-            l = 2
+            l = 4
         case "c": 
             r = 4
-            l = 1.5
+            l = 2
         case "d": 
             r = 3
-            l = 1.25
+            l = 1.5
         case "e": 
             r = 2
             l = 1
         case "f": 
             r = 1
-            l = 0.75
+            l = 0.5
 else:
-    r = 2
-    l = 1
+    r = 3
+    l = 1.5
     m = "d"
 
 print("")
@@ -182,10 +190,9 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     
     player1["alter"] += 1
 
-
-    verb = [" geht", " läuft", " springt", " wandert", " sprintet", " läuft vorsichtig", " fliegt", " geht erneut", " taucht", " klettert", " gräbt sich", " bohrt sich", " fällt"]
-
     #addons
+    f = open("verb.json")
+    verblist = json.load(f)
     f = open("enemy.json")
     enemylist = json.load(f)
     f = open("locations.json")
@@ -194,17 +201,19 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     # Replace characters in the JSON objects
     enemylist = lg.replace_umlauts(enemylist)
     locationslist = lg.replace_umlauts(locationslist)
+    verblist = lg.replace_umlauts(verblist)
+
+
+    verb = rd.choice(verblist)
 
     if rd.randint(1,2) == 2:
         location = rd.choice(locationslist)
-        verb = rd.choice(verb)
-        print(player1["name"] + verb + location["info"])
+        print(player1["name"] + " " + verb["verb"] + " " + location["info"])
     else:
         enemy = rd.choice(enemylist)
-        verb = rd.choice(verb)
-        bodylocationslist = [" an totem " + enemy["name"] + " vorbei"," an einem " + enemy["name"] + " vorbei"] 
+        bodylocationslist = ["an totem " + enemy["name"] + " vorbei","an einem " + enemy["name"] + " vorbei"] 
         bodylocation = rd.choice(bodylocationslist)
-        print(player1["name"] + verb + bodylocation)
+        print(player1["name"] + " " + verb["verb"] + " " + bodylocation)
     print("")
     print("")
     time.sleep(standartwartezeit)
@@ -213,7 +222,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
-                        enemy["rank"] = r + rd.randint(-1,1)
+                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy["rank"] = r + rd.randint(-1,0)
                         enemy = lg.weaponsgetaddon(enemy)
                         enemy = lg.fight(automode,player1,enemy,die*dieten)
                         goblin1 = enemy
@@ -251,36 +261,36 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
         elif m == "sss":
             print(player1["name"] + "ist jetzt auf dem maximalem Level")
             r = 10
-            l = 1000000
+            l = 1000000000
         else:
             match m:
-                    case "sss": 
-                        r = 9
-                        l = 1000
-                    case "ss": 
-                        r = 8
-                        l = 100
-                    case "s": 
-                        r = 7
-                        l = 10
-                    case "a": 
-                        r = 6
-                        l = 5
-                    case "b": 
-                        r = 5
-                        l = 2
-                    case "c": 
-                        r = 4
-                        l = 1.5
-                    case "d": 
-                        r = 3
-                        l = 1.25
-                    case "e": 
-                        r = 2
-                        l = 1
-                    case "f": 
-                        r = 1
-                        l = 0.75
+                case "sss": 
+                    r = 9
+                    l = 26275
+                case "ss": 
+                    r = 8
+                    l = 2145
+                case "s": 
+                    r = 7
+                    l = 275
+                case "a": 
+                    r = 6
+                    l = 25
+                case "b": 
+                    r = 5
+                    l = 4
+                case "c": 
+                    r = 4
+                    l = 2
+                case "d": 
+                    r = 3
+                    l = 1.5
+                case "e": 
+                    r = 2
+                    l = 1
+                case "f": 
+                    r = 1
+                    l = 0.5
         
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": player1["leben"]*l, "waffe": player1["waffe"]}
     time.sleep(standartwartezeit)

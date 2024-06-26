@@ -5,7 +5,7 @@
     {"name": "Drache", "alter": 150,"leben": 500},
     {"name": "Mensch", "alter": 26,"leben": 100},
     {"name": "Magier", "alter": 37,"leben": 130},
-    {"name": "Dämon", "alter": 145,"leben": 200},
+    {"name": "D(ae)mon", "alter": 145,"leben": 200},
     {"name": "Goblin", "alter": 6,"leben": 20},
     {"name": "Huhn", "alter": 1,"leben": 5}
 ]
