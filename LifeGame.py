@@ -3,33 +3,49 @@ import json
 
 standartwartezeit = 2 #standart wartezeit :)
 class LifeGameMain:#Alle wichtigen abläufe in dieser class
-        def weaponsgetaddon(object1): 
+        def weaponsgetaddon(object1,randommode): 
             with open("weapondmg.json") as f:
                 weapon_data = json.load(f)
                 weaponlist = weapon_data[0]  # Access the dictionary within the list
             
             weaponlist = lg.replace_umlauts(weaponlist)
 
-            if object1["rank"] < 11:
-                weapon_rank_key = f"r{object1['rank']}"
-                if weapon_rank_key in weaponlist:
-                    rank_weaponlist = weaponlist[weapon_rank_key]
-                    weapon = rd.choice(rank_weaponlist)
+            if randommode == "r":
+                if object1["rank"] < 11:
+                    weapon_rank_key = f"r{rd.randint(1,10)}"
+                    if weapon_rank_key in weaponlist:
+                        rank_weaponlist = weaponlist[weapon_rank_key]
+                        weapon = rd.choice(rank_weaponlist)
+                    else:
+                        raise ValueError(f"Rank {rd.randint(1,10)} not found in weaponlist")
                 else:
-                    raise ValueError(f"Rank {object1['rank']} not found in weaponlist")
+                    weapon = {
+                        "name": "Macht der Unendlichkeit",
+                        "waffe": "schoß mit der Magie der Unendlichkeit auf",
+                        "attack-s": 1000000000000
+                    }
             else:
-                weapon = {
-                    "name": "Macht der Unendlichkeit",
-                    "waffe": "schoß mit der Magie der Unendlichkeit auf",
-                    "attack-s": 1000000000000
-                }
+                if object1["rank"] < 11:
+                    weapon_rank_key = f"r{object1['rank']}"
+                    if weapon_rank_key in weaponlist:
+                        rank_weaponlist = weaponlist[weapon_rank_key]
+                        weapon = rd.choice(rank_weaponlist)
+                    else:
+                        raise ValueError(f"Rank {object1['rank']} not found in weaponlist")
+                else:
+                    weapon = {
+                        "name": "Macht der Unendlichkeit",
+                        "waffe": "schoß mit der Magie der Unendlichkeit auf",
+                        "attack-s": 1000000000000
+                    }
 
             object1 = {
                 "name": object1["name"],
                 "alter": object1["alter"],
                 "attack-s": weapon["attack-s"],
                 "leben": object1["leben"],
-                "waffe": weapon["waffe"]
+                "waffe": weapon["waffe"],
+                "rank": object1["rank"]
             }
             
             return object1
@@ -121,43 +137,6 @@ print(" ")
 
 print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
 m = input("Stärke = ")
-if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
-    match m:
-        case "dev": 
-            r = 10
-            l = 1000000
-            standartwartezeit = 0.5
-        case "sss": 
-            r = 9
-            l = 26275
-        case "ss": 
-            r = 8
-            l = 2145
-        case "s": 
-            r = 7
-            l = 275
-        case "a": 
-            r = 6
-            l = 25
-        case "b": 
-            r = 5
-            l = 4
-        case "c": 
-            r = 4
-            l = 2
-        case "d": 
-            r = 3
-            l = 1.5
-        case "e": 
-            r = 2
-            l = 1
-        case "f": 
-            r = 1
-            l = 0.5
-else:
-    r = 3
-    l = 1.5
-    m = "d"
 
 print("")
 print("Automode lässt dich automatisch kämpfen und nicht auswählen was du machen willst.")
@@ -165,8 +144,84 @@ print("Bei Eingabe kannst du auswählen ob du fliehen willst oder kämpfen möch
 print("Automode (a) / Eingabe (e)...")
 automode = input("Mode = ")
 
+print("")
+print("Random (r) / normal (n)")
+randommode = input("Mode = ")
+if randommode != "r":
+    if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
+        match m:
+            case "dev": 
+                r = 10
+                l = 1000000
+                standartwartezeit = 0.5
+            case "sss": 
+                r = 9
+                l = 26275
+            case "ss": 
+                r = 8
+                l = 2145
+            case "s": 
+                r = 7
+                l = 275
+            case "a": 
+                r = 6
+                l = 25
+            case "b": 
+                r = 5
+                l = 4
+            case "c": 
+                r = 4
+                l = 2
+            case "d": 
+                r = 3
+                l = 1.5
+            case "e": 
+                r = 2
+                l = 1
+            case "f": 
+                r = 1
+                l = 0.5
+    else:
+        r = 3
+        l = 1.5
+        m = "d"
+elif randommode == "r":
+    if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
+        match m:
+            case "dev": 
+                r = 10
+                l = 10000
+                standartwartezeit = 0.2
+            case "sss": 
+                r = 9
+                l = 1000
+            case "ss": 
+                r = 8
+                l = 100
+            case "s": 
+                r = 7
+                l = 10
+            case "a": 
+                r = 6
+                l = 5
+            case "b": 
+                r = 5
+                l = 2
+            case "c": 
+                r = 4
+                l = 1.5
+            case "d": 
+                r = 3
+                l = 1.25
+            case "e": 
+                r = 2
+                l = 1
+            case "f": 
+                r = 1
+                l = 0.75
+
 player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r + rd.randint(-1,1)}
-player1 = lg.weaponsgetaddon(player1)
+player1 = lg.weaponsgetaddon(player1,randommode)
 
 moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
 
@@ -224,7 +279,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         enemy["alter"] += rd.randint(0,30)
                         enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120-(r*2)))/100)
                         enemy["rank"] = r + rd.randint(-1,1)
-                        enemy = lg.weaponsgetaddon(enemy)
+                        enemy = lg.weaponsgetaddon(enemy,randommode)
                         enemy = lg.fight(automode,player1,enemy,die*dieten)
                         goblin1 = enemy
                         if enemy["leben"] < 1:
@@ -262,38 +317,81 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
             print(player1["name"] + "ist jetzt auf dem maximalem Level")
             r = 10
             l = 1000000000
-        else:
-            match m:
-                case "sss": 
-                    r = 9
-                    l = 26275
-                case "ss": 
-                    r = 8
-                    l = 2145
-                case "s": 
-                    r = 7
-                    l = 275
-                case "a": 
-                    r = 6
-                    l = 25
-                case "b": 
-                    r = 5
-                    l = 4
-                case "c": 
-                    r = 4
-                    l = 2
-                case "d": 
-                    r = 3
-                    l = 1.5
-                case "e": 
-                    r = 2
-                    l = 1
-                case "f": 
-                    r = 1
-                    l = 0.5
-        
+        if randommode != "r":
+            if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
+                match m:
+                    case "dev": 
+                        r = 10
+                        l = 1000000
+                        standartwartezeit = 0.5
+                    case "sss": 
+                        r = 9
+                        l = 26275
+                    case "ss": 
+                        r = 8
+                        l = 2145
+                    case "s": 
+                        r = 7
+                        l = 275
+                    case "a": 
+                        r = 6
+                        l = 25
+                    case "b": 
+                        r = 5
+                        l = 4
+                    case "c": 
+                        r = 4
+                        l = 2
+                    case "d": 
+                        r = 3
+                        l = 1.5
+                    case "e": 
+                        r = 2
+                        l = 1
+                    case "f": 
+                        r = 1
+                        l = 0.5
+            else:
+                r = 3
+                l = 1.5
+                m = "d"
+        elif randommode == "r":
+            if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
+                match m:
+                    case "dev": 
+                        r = 10
+                        l = 10000
+                        standartwartezeit = 0.2
+                    case "sss": 
+                        r = 9
+                        l = 1000
+                    case "ss": 
+                        r = 8
+                        l = 100
+                    case "s": 
+                        r = 7
+                        l = 10
+                    case "a": 
+                        r = 6
+                        l = 5
+                    case "b": 
+                        r = 5
+                        l = 2
+                    case "c": 
+                        r = 4
+                        l = 1.5
+                    case "d": 
+                        r = 3
+                        l = 1.25
+                    case "e": 
+                        r = 2
+                        l = 1
+                    case "f": 
+                        r = 1
+                        l = 0.75
+                
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 210*l, "waffe": player1["waffe"], "rank": r + rd.randint(-1,1)}
-        player1 = lg.weaponsgetaddon(player1)
+        player1 = lg.weaponsgetaddon(player1,randommode)
     time.sleep(standartwartezeit)
 
 time.sleep(10)
