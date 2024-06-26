@@ -1,0 +1,54 @@
+[
+    {
+    "r10": [
+        {"name": "Every-Gun, der Sonne", "waffe": "schoß mit Every-Gun die Sonne auf", "attack-s" : 210000000}
+    ],
+
+    "r9": [
+        {"name": "Every-Gun, der Mond", "waffe": "schoß mit Every-Gun den Mond auf", "attack-s" : 210000000}
+    ],
+
+    "r8": [
+        {"name": "Every-Gun, ein Schiff", "waffe": "schoß mit Every-Gun ein Schiff auf", "attack-s" : 3000000}
+    ],
+        
+    "r7":[ 
+        {"name": "Every-Gun, ein Haus", "waffe": "schoß mit Every-Gun ein Haus auf", "attack-s" : 300000},
+        {"name": "Every-Gun, ein U-boot", "waffe": "schoß mit Every-Gun ein U-Boot auf", "attack-s" : 780000},
+        {"name": "Every-Gun, ein Auto", "waffe": "schoß mit Every-Gun ein Auto auf", "attack-s" : 42000},
+        {"name": "Every-Gun, eine Kuh", "waffe": "warf einen Kuh auf", "attack-s" : 19500}
+    ],
+
+    "r6": [
+        {"name": "Every-Gun, ein Baum", "waffe": "schoß mit Every-Gun einen Baum auf", "attack-s" : 4500},
+        {"name": "Every-Gun, ein Meteorit", "waffe": "schoß mit Every-Gun einen Meteoriten auf", "attack-s" : 7500}
+    ],
+
+    "r5": [
+        {"name": "Panzer", "waffe": "schoß einem Panzer auf", "attack-s" : 760}
+    ],
+
+    "r4": [
+        {"name": "beam canon", "waffe": "schoß mit einer beam canon auf", "attack-s" : 260}
+    ],
+
+    "r3": [
+        {"name": "Barett", "waffe": "schoß mit einem Barett m90 auf", "attack-s" : 100}
+    ],
+
+    "r2": [
+        {"name": "Bogen Stahl", "waffe": "schoß mit einem stahl Bogen auf", "attack-s" : 50},
+        {"name": "Every-Gun, einen kleiner Stein", "waffe": "schoß mit Every-Gun einen Stein auf", "attack-s" : 30},
+        {"name": "Plasma Pistole", "waffe": "schoß mit einer Plasma Pistole auf", "attack-s" : 60}
+    ],
+
+    "r1": [
+        {"name": "Hand", "waffe" :"schlägt mit der Hand auf", "attack-s" : 1},
+        {"name": "Stock", "waffe": "schlägt mit einem Stock auf", "attack-s" : 5},
+        {"name": "Holzscwert", "waffe": "schlug mit einem Schwert gegen", "attack-s" : 10},
+        {"name": "Bogen", "waffe": "schoß mit einem Bogen auf", "attack-s" : 20}
+    ]
+
+
+    }
+]
