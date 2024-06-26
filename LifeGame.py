@@ -165,7 +165,7 @@ print("Bei Eingabe kannst du auswählen ob du fliehen willst oder kämpfen möch
 print("Automode (a) / Eingabe (e)...")
 automode = input("Mode = ")
 
-player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r}
+player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r + rd.randint(-1,1)}
 player1 = lg.weaponsgetaddon(player1)
 
 moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
@@ -222,8 +222,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
-                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
-                        enemy["rank"] = r + rd.randint(-1,0)
+                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120-(r*2)))/100)
+                        enemy["rank"] = r + rd.randint(-1,1)
                         enemy = lg.weaponsgetaddon(enemy)
                         enemy = lg.fight(automode,player1,enemy,die*dieten)
                         goblin1 = enemy
@@ -292,7 +292,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                     r = 1
                     l = 0.5
         
-        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": player1["leben"]*l, "waffe": player1["waffe"]}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 210*l, "waffe": player1["waffe"], "rank": r + rd.randint(-1,1)}
+        player1 = lg.weaponsgetaddon(player1)
     time.sleep(standartwartezeit)
 
 time.sleep(10)
