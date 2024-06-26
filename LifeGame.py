@@ -29,6 +29,15 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     weapon_rank_key = f"r{object1['rank']}"
                     if weapon_rank_key in weaponlist:
                         rank_weaponlist = weaponlist[weapon_rank_key]
+                        weapon_rank_key_true = True
+                        a = 0
+                        while weapon_rank_key_true == True:
+                            a += 1
+                            weapon_rank_key = f"r{object1['rank']-a}"
+                            if weapon_rank_key in weaponlist:
+                                rank_weaponlist = rank_weaponlist + weaponlist[weapon_rank_key]
+                            else: 
+                                weapon_rank_key_true = False
                         weapon = rd.choice(rank_weaponlist)
                     else:
                         raise ValueError(f"Rank {object1['rank']} not found in weaponlist")
@@ -152,35 +161,35 @@ if randommode != "r":
         match m:
             case "dev": 
                 r = 10
-                l = 1000000
-                standartwartezeit = 0.5
+                l = 10000
+                standartwartezeit = 0.2
             case "sss": 
                 r = 9
-                l = 26275
+                l = 1000
             case "ss": 
                 r = 8
-                l = 2145
+                l = 100
             case "s": 
                 r = 7
-                l = 275
+                l = 10
             case "a": 
                 r = 6
-                l = 25
+                l = 5
             case "b": 
                 r = 5
-                l = 4
+                l = 2
             case "c": 
                 r = 4
-                l = 2
+                l = 1.5
             case "d": 
                 r = 3
-                l = 1.5
+                l = 1.25
             case "e": 
                 r = 2
                 l = 1
             case "f": 
                 r = 1
-                l = 0.5
+                l = 0.75
     else:
         r = 3
         l = 1.5
@@ -220,7 +229,7 @@ elif randommode == "r":
                 r = 1
                 l = 0.75
 
-player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r + rd.randint(-1,1)}
+player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r}
 player1 = lg.weaponsgetaddon(player1,randommode)
 
 moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
@@ -273,12 +282,14 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     print("")
     time.sleep(standartwartezeit)
 
-    if rd.randint(r,12) > 10: #Kampf
+    if rd.randint(r,20) > 10: #Kampf
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
                         enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120-(r*2)))/100)
-                        enemy["rank"] = r + rd.randint(-1,1)
+                        er = r + rd.randint(-3,0)
+                        if er < 1: er = 1
+                        enemy["rank"] = er
                         enemy = lg.weaponsgetaddon(enemy,randommode)
                         enemy = lg.fight(automode,player1,enemy,die*dieten)
                         goblin1 = enemy
@@ -289,7 +300,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                             print(" ")
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
-            if player1["leben"] < 1000:
+            if player1["leben"] < 1000000:
                 if player1["leben"] > 200:player1["leben"] += 5
                 else:player1["leben"] += 25
     if die > 10:
@@ -322,35 +333,35 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                 match m:
                     case "dev": 
                         r = 10
-                        l = 1000000
-                        standartwartezeit = 0.5
+                        l = 10000
+                        standartwartezeit = 0.2
                     case "sss": 
                         r = 9
-                        l = 26275
+                        l = 1000
                     case "ss": 
                         r = 8
-                        l = 2145
+                        l = 100
                     case "s": 
                         r = 7
-                        l = 275
+                        l = 10
                     case "a": 
                         r = 6
-                        l = 25
+                        l = 5
                     case "b": 
                         r = 5
-                        l = 4
+                        l = 2
                     case "c": 
                         r = 4
-                        l = 2
+                        l = 1.5
                     case "d": 
                         r = 3
-                        l = 1.5
+                        l = 1.25
                     case "e": 
                         r = 2
                         l = 1
                     case "f": 
                         r = 1
-                        l = 0.5
+                        l = 0.75
             else:
                 r = 3
                 l = 1.5
@@ -390,7 +401,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         r = 1
                         l = 0.75
                 
-        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 210*l, "waffe": player1["waffe"], "rank": r + rd.randint(-1,1)}
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 210*l, "waffe": player1["waffe"], "rank": r}
         player1 = lg.weaponsgetaddon(player1,randommode)
     time.sleep(standartwartezeit)
 

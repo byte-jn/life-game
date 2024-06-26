@@ -21,10 +21,13 @@
 
     "r6": [
         {"name": "Every-Gun, ein Baum", "waffe": "scho(sz) mit Every-Gun einen Baum auf", "attack-s" : 4500},
+        {"name": "rush", "waffe": "rushed auf", "attack-s": 2800},
+        {"name": "orbital Laser", "waffe": "schie(sz)t Orbitallaser auf", "attack-s": 2000},
         {"name": "Every-Gun, ein Meteorit", "waffe": "scho(sz) mit Every-Gun einen Meteoriten auf", "attack-s" : 7500}
     ],
 
     "r5": [
+        {"name": "Panzerkugel", "waffe": "ballert AP-Kugel auf", "attack-s": 800},
         {"name": "Panzer", "waffe": "scho(sz) einem Panzer auf", "attack-s" : 760}
     ],
 
@@ -33,22 +36,27 @@
     ],
 
     "r3": [
-        {"name": "Barett", "waffe": "scho(sz) mit einem Barett m90 auf", "attack-s" : 100}
+        {"name": "Barett", "waffe": "scho(sz) mit einem Barett m90 auf", "attack-s" : 100},
+        {"name": "Daniel", "waffe": "Gravitationsfeld wirkt auf", "attack-s": 140}
     ],
 
     "r2": [
         {"name": "Bogen Stahl", "waffe": "scho(sz) mit einem stahl Bogen auf", "attack-s" : 50},
         {"name": "Every-Gun, einen kleiner Stein", "waffe": "scho(sz) mit Every-Gun einen Stein auf", "attack-s" : 30},
+        {"name": "Biss", "waffe": "bei(sz)t", "attack-s": 40},
+        {"name": "Explosives Ei", "waffe": "legt Exposives Ei auf", "attack-s": 80},
         {"name": "Plasma Pistole", "waffe": "scho(sz) mit einer Plasma Pistole auf", "attack-s" : 60}
     ],
 
     "r1": [
         {"name": "Hand", "waffe" :"schl(ae)gt mit der Hand auf", "attack-s" : 1},
         {"name": "Stock", "waffe": "schl(ae)gt mit einem Stock auf", "attack-s" : 5},
+        {"name": "Agumentiert", "waffe": "agummentiert auf","attack-s": 20},
         {"name": "Holzscwert", "waffe": "schlug mit einem Schwert gegen", "attack-s" : 10},
+        {"name": "Essenszeit", "waffe": "isst","attack-s": 15}, 
+        {"name": "Bestehlung abgelehnt", "waffe": "lehnt bestellung ab und wirkt trauer auf","attack-s": 7},
         {"name": "Bogen", "waffe": "scho(sz) mit einem Bogen auf", "attack-s" : 20}
     ]
-
 
     }
 ]
