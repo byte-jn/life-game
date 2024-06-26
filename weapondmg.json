@@ -1,0 +1,54 @@
+[
+    {
+    "r10": [
+        {"name": "Every-Gun, der Sonne", "waffe": "scho(sz) mit Every-Gun die Sonne auf", "attack-s" : 9900000000}
+    ],
+
+    "r9": [
+        {"name": "Every-Gun, der Mond", "waffe": "scho(sz) mit Every-Gun den Mond auf", "attack-s" : 210000000},
+        {"name": "Every-Gun, ein Schiff", "waffe": "scho(sz) mit Every-Gun ein Schiff auf", "attack-s" : 3000000}
+    ],
+
+    "r8": [
+        {"name": "Every-Gun, ein Haus", "waffe": "scho(sz) mit Every-Gun ein Haus auf", "attack-s" : 300000},
+        {"name": "Every-Gun, ein U-boot", "waffe": "scho(sz) mit Every-Gun ein U-Boot auf", "attack-s" : 780000}
+    ],
+        
+    "r7":[ 
+        {"name": "Every-Gun, ein Auto", "waffe": "scho(sz) mit Every-Gun ein Auto auf", "attack-s" : 42000},
+        {"name": "Every-Gun, eine Kuh", "waffe": "warf einen Kuh auf", "attack-s" : 19500}
+    ],
+
+    "r6": [
+        {"name": "Every-Gun, ein Baum", "waffe": "scho(sz) mit Every-Gun einen Baum auf", "attack-s" : 4500},
+        {"name": "Every-Gun, ein Meteorit", "waffe": "scho(sz) mit Every-Gun einen Meteoriten auf", "attack-s" : 7500}
+    ],
+
+    "r5": [
+        {"name": "Panzer", "waffe": "scho(sz) einem Panzer auf", "attack-s" : 760}
+    ],
+
+    "r4": [
+        {"name": "beam canon", "waffe": "scho(sz) mit einer beam canon auf", "attack-s" : 260}
+    ],
+
+    "r3": [
+        {"name": "Barett", "waffe": "scho(sz) mit einem Barett m90 auf", "attack-s" : 100}
+    ],
+
+    "r2": [
+        {"name": "Bogen Stahl", "waffe": "scho(sz) mit einem stahl Bogen auf", "attack-s" : 50},
+        {"name": "Every-Gun, einen kleiner Stein", "waffe": "scho(sz) mit Every-Gun einen Stein auf", "attack-s" : 30},
+        {"name": "Plasma Pistole", "waffe": "scho(sz) mit einer Plasma Pistole auf", "attack-s" : 60}
+    ],
+
+    "r1": [
+        {"name": "Hand", "waffe" :"schl(ae)gt mit der Hand auf", "attack-s" : 1},
+        {"name": "Stock", "waffe": "schl(ae)gt mit einem Stock auf", "attack-s" : 5},
+        {"name": "Holzscwert", "waffe": "schlug mit einem Schwert gegen", "attack-s" : 10},
+        {"name": "Bogen", "waffe": "scho(sz) mit einem Bogen auf", "attack-s" : 20}
+    ]
+
+
+    }
+]
