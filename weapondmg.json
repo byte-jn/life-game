@@ -1,54 +1,133 @@
 [
     {
-    "r10": [
-        {"name": "Every-Gun, der Sonne", "waffe": "scho(sz) mit Every-Gun die Sonne auf", "attack-s" : 9900000000}
-    ],
+        "r10": [
+            {"name": "Kanone, der Sonne", "waffe": "schoss mit Kanone die Sonne auf", "attack-s" : 9900000000},
+            {"name": "Galaktischer Zerst(oe)rer", "waffe": "schoss mit dem Galaktischen Zerst(oe)rer auf", "attack-s" : 8500000000},
+            {"name": "Kosmische Kanone", "waffe": "schoss mit der Kosmischen Kanone auf", "attack-s" : 7500000000},
+            {"name": "Universumsbrecher", "waffe": "schoss mit dem Universumsbrecher auf", "attack-s" : 7800000000},
+            {"name": "Sternenvernichter", "waffe": "schoss mit dem Sternenvernichter auf", "attack-s" : 7200000000},
+            {"name": "Quasar-Kanone", "waffe": "schoss mit der Quasar-Kanone auf", "attack-s" : 7000000000},
+            {"name": "Schwarzes Loch Generator", "waffe": "schoss mit dem Schwarzen Loch Generator auf", "attack-s" : 9500000000},
+            {"name": "Neutronensternwerfer", "waffe": "schoss mit dem Neutronensternwerfer auf", "attack-s" : 8800000000},
+            {"name": "Exo-Waffenplattform", "waffe": "schoss mit der Exo-Waffenplattform auf", "attack-s" : 9000000000},
+            {"name": "Hypernova Blaster", "waffe": "schoss mit dem Hypernova Blaster auf", "attack-s" : 9300000000} 
+        ],
 
-    "r9": [
-        {"name": "Every-Gun, der Mond", "waffe": "scho(sz) mit Every-Gun den Mond auf", "attack-s" : 210000000},
-        {"name": "Every-Gun, ein Schiff", "waffe": "scho(sz) mit Every-Gun ein Schiff auf", "attack-s" : 3000000}
-    ],
+        "r9": [
+            {"name": "Kanone, der Mond", "waffe": "schoss mit Kanone den Mond auf", "attack-s" : 210000000},
+            {"name": "Kanone, ein Schiff", "waffe": "schoss mit Kanone ein Schiff auf", "attack-s" : 3000000},
+            {"name": "Orbitaler Laserstrahl", "waffe": "schoss mit dem Orbitalen Laserstrahl auf", "attack-s" : 500000000},
+            {"name": "Supernova-Kanone", "waffe": "schoss mit der Supernova-Kanone auf", "attack-s" : 700000000},
+            {"name": "Planetenzerst(oe)rer", "waffe": "schoss mit dem Planetenzerst(oe)rer auf", "attack-s" : 600000000},
+            {"name": "Dimensionenspalter", "waffe": "schoss mit dem Dimensionenspalter auf", "attack-s" : 550000000},
+            {"name": "Gamma-Strahlenkanone", "waffe": "schoss mit der Gamma-Strahlenkanone auf", "attack-s" : 650000000},
+            {"name": "Raum-Zeit-Kanone", "waffe": "schoss mit der Raum-Zeit-Kanone auf", "attack-s" : 680000000},
+            {"name": "Antimaterie-Laser", "waffe": "schoss mit dem Antimaterie-Laser auf", "attack-s" : 620000000},
+            {"name": "Kometenwerfer", "waffe": "schoss mit dem Kometenwerfer auf", "attack-s" : 580000000}
+        ],
 
-    "r8": [
-        {"name": "Every-Gun, ein Haus", "waffe": "scho(sz) mit Every-Gun ein Haus auf", "attack-s" : 300000},
-        {"name": "Every-Gun, ein U-boot", "waffe": "scho(sz) mit Every-Gun ein U-Boot auf", "attack-s" : 780000}
-    ],
-        
-    "r7":[ 
-        {"name": "Every-Gun, ein Auto", "waffe": "scho(sz) mit Every-Gun ein Auto auf", "attack-s" : 42000},
-        {"name": "Every-Gun, eine Kuh", "waffe": "warf einen Kuh auf", "attack-s" : 19500}
-    ],
+        "r8": [
+            {"name": "Kanone, ein Haus", "waffe": "schoss mit Kanone ein Haus auf", "attack-s" : 300000},
+            {"name": "Kanone, ein U-Boot", "waffe": "schoss mit Kanone ein U-Boot auf", "attack-s" : 780000},
+            {"name": "Hyper-Raketenwerfer", "waffe": "schoss mit dem Hyper-Raketenwerfer auf", "attack-s" : 1000000},
+            {"name": "Plasma-Kanone", "waffe": "schoss mit der Plasma-Kanone auf", "attack-s" : 2000000},
+            {"name": "Tesla-Kanone", "waffe": "schoss mit der Tesla-Kanone auf", "attack-s" : 1200000},
+            {"name": "Partikelstrahlgewehr", "waffe": "schoss mit dem Partikelstrahlgewehr auf", "attack-s" : 1500000},
+            {"name": "Ionengewehr", "waffe": "schoss mit dem Ionengewehr auf", "attack-s" : 1800000},
+            {"name": "Photonenwerfer", "waffe": "schoss mit dem Photonenwerfer auf", "attack-s" : 1700000},
+            {"name": "Molekularzerst(oe)rer", "waffe": "schoss mit dem Molekularzerst(oe)rer auf", "attack-s" : 1400000},
+            {"name": "Gravitationsgewehr", "waffe": "schoss mit dem Gravitationsgewehr auf", "attack-s" : 1600000}
+        ],
+            
+        "r7": [
+            {"name": "Kanone, ein Auto", "waffe": "schoss mit Kanone ein Auto auf", "attack-s" : 42000},
+            {"name": "Kanone, eine Kuh", "waffe": "warf eine Kuh auf", "attack-s" : 19500},
+            {"name": "Lasergewehr", "waffe": "schoss mit einem Lasergewehr auf", "attack-s" : 50000},
+            {"name": "Gauss-Gewehr", "waffe": "schoss mit einem Gauss-Gewehr auf", "attack-s" : 75000},
+            {"name": "Schrotflinte", "waffe": "schoss mit einer Schrotflinte auf", "attack-s" : 35000},
+            {"name": "Flammenwerfer", "waffe": "schoss mit einem Flammenwerfer auf", "attack-s" : 60000},
+            {"name": "Magnetgewehr", "waffe": "schoss mit einem Magnetgewehr auf", "attack-s" : 70000},
+            {"name": "Schallkanone", "waffe": "schoss mit einer Schallkanone auf", "attack-s" : 80000},
+            {"name": "EMP-Werfer", "waffe": "schoss mit einem EMP-Werfer auf", "attack-s" : 65000},
+            {"name": "Railgun", "waffe": "schoss mit einer Railgun auf", "attack-s" : 90000}
+        ],
 
-    "r6": [
-        {"name": "Every-Gun, ein Baum", "waffe": "scho(sz) mit Every-Gun einen Baum auf", "attack-s" : 4500},
-        {"name": "Every-Gun, ein Meteorit", "waffe": "scho(sz) mit Every-Gun einen Meteoriten auf", "attack-s" : 7500}
-    ],
+        "r6": [
+            {"name": "Kanone, ein Baum", "waffe": "schoss mit Kanone einen Baum auf", "attack-s" : 4500},
+            {"name": "Kanone, ein Meteorit", "waffe": "schoss mit Kanone einen Meteoriten auf", "attack-s" : 7500},
+            {"name": "Granatwerfer", "waffe": "schoss mit einem Granatwerfer auf", "attack-s" : 10000},
+            {"name": "Schallkanone", "waffe": "schoss mit einer Schallkanone auf", "attack-s" : 15000},
+            {"name": "Flammenwerfer", "waffe": "schoss mit einem Flammenwerfer auf", "attack-s" : 12000},
+            {"name": "Raketenwerfer", "waffe": "schoss mit einem Raketenwerfer auf", "attack-s" : 14000},
+            {"name": "Automatikgewehr", "waffe": "schoss mit einem Automatikgewehr auf", "attack-s" : 11000},
+            {"name": "Impulsgewehr", "waffe": "schoss mit einem Impulsgewehr auf", "attack-s" : 13000},
+            {"name": "Gaswerfer", "waffe": "schoss mit einem Gaswerfer auf", "attack-s" : 9000},
+            {"name": "Scharfsch(ue)tzengewehr", "waffe": "schoss mit einem Scharfsch(ue)tzengewehr auf", "attack-s" : 8000}
+        ],
 
-    "r5": [
-        {"name": "Panzer", "waffe": "scho(sz) einem Panzer auf", "attack-s" : 760}
-    ],
+        "r5": [
+            {"name": "Panzer", "waffe": "schoss mit einem Panzer auf", "attack-s" : 760},
+            {"name": "Flammenwerfer", "waffe": "schoss mit einem Flammenwerfer auf", "attack-s" : 1200},
+            {"name": "Raketenwerfer", "waffe": "schoss mit einem Raketenwerfer auf", "attack-s" : 1500},
+            {"name": "Granatwerfer", "waffe": "schoss mit einem Granatwerfer auf", "attack-s" : 1100},
+            {"name": "Maschinengewehr", "waffe": "schoss mit einem Maschinengewehr auf", "attack-s" : 1000},
+            {"name": "Plasmagewehr", "waffe": "schoss mit einem Plasmagewehr auf", "attack-s" : 1400},
+            {"name": "Lasergewehr", "waffe": "schoss mit einem Lasergewehr auf", "attack-s" : 1300},
+            {"name": "Gaussgewehr", "waffe": "schoss mit einem Gaussgewehr auf", "attack-s" : 1600},
+            {"name": "Impulsgewehr", "waffe": "schoss mit einem Impulsgewehr auf", "attack-s" : 900},
+            {"name": "Energiewaffe", "waffe": "schoss mit einer Energiewaffe auf", "attack-s" : 1700}
+        ],
 
-    "r4": [
-        {"name": "beam canon", "waffe": "scho(sz) mit einer beam canon auf", "attack-s" : 260}
-    ],
+        "r4": [
+            {"name": "Beam Kanone", "waffe": "schoss mit einer Beam Kanone auf", "attack-s" : 260},
+            {"name": "Schweres Maschinengewehr", "waffe": "schoss mit einem schweren Maschinengewehr auf", "attack-s" : 400},
+            {"name": "Schrotflinte", "waffe": "schoss mit einer Schrotflinte auf", "attack-s" : 350},
+            {"name": "Pistole", "waffe": "schoss mit einer Pistole auf", "attack-s" : 300},
+            {"name": "Plasma Pistole", "waffe": "schoss mit einer Plasma Pistole auf", "attack-s" : 280},
+            {"name": "Laserpistole", "waffe": "schoss mit einer Laserpistole auf", "attack-s" : 320},
+            {"name": "Granatpistole", "waffe": "schoss mit einer Granatpistole auf", "attack-s" : 330},
+            {"name": "Impulsgewehr", "waffe": "schoss mit einem Impulsgewehr auf", "attack-s" : 370},
+            {"name": "Plasma Gewehr", "waffe": "schoss mit einem Plasma Gewehr auf", "attack-s" : 340},
+            {"name": "Lasergewehr", "waffe": "schoss mit einem Lasergewehr auf", "attack-s" : 310}
+        ],
 
-    "r3": [
-        {"name": "Barett", "waffe": "scho(sz) mit einem Barett m90 auf", "attack-s" : 100}
-    ],
+        "r3": [
+            {"name": "Barett", "waffe": "schoss mit einem Barett m90 auf", "attack-s" : 100},
+            {"name": "Scharfsch(ue)tzengewehr", "waffe": "schoss mit einem Scharfsch(ue)tzengewehr auf", "attack-s" : 150},
+            {"name": "Pistole", "waffe": "schoss mit einer Pistole auf", "attack-s" : 120},
+            {"name": "Revolver", "waffe": "schoss mit einem Revolver auf", "attack-s" : 110},
+            {"name": "Plasma Pistole", "waffe": "schoss mit einer Plasma Pistole auf", "attack-s" : 140},
+            {"name": "Laserpistole", "waffe": "schoss mit einer Laserpistole auf", "attack-s" : 130},
+            {"name": "Schrotflinte", "waffe": "schoss mit einer Schrotflinte auf", "attack-s" : 125},
+            {"name": "Granatpistole", "waffe": "schoss mit einer Granatpistole auf", "attack-s" : 135},
+            {"name": "Armbrust", "waffe": "schoss mit einer Armbrust auf", "attack-s" : 115},
+            {"name": "Energiepistole", "waffe": "schoss mit einer Energiepistole auf", "attack-s" : 145}
+        ],
 
-    "r2": [
-        {"name": "Bogen Stahl", "waffe": "scho(sz) mit einem stahl Bogen auf", "attack-s" : 50},
-        {"name": "Every-Gun, einen kleiner Stein", "waffe": "scho(sz) mit Every-Gun einen Stein auf", "attack-s" : 30},
-        {"name": "Plasma Pistole", "waffe": "scho(sz) mit einer Plasma Pistole auf", "attack-s" : 60}
-    ],
+        "r2": [
+            {"name": "Bogen Stahl", "waffe": "schoss mit einem Stahlbogen auf", "attack-s" : 50},
+            {"name": "Kanone, einen kleinen Stein", "waffe": "schoss mit Kanone einen kleinen Stein auf", "attack-s" : 30},
+            {"name": "Plasma Pistole", "waffe": "schoss mit einer Plasma Pistole auf", "attack-s" : 60},
+            {"name": "Armbrust", "waffe": "schoss mit einer Armbrust auf", "attack-s" : 40},
+            {"name": "Revolver", "waffe": "schoss mit einem Revolver auf", "attack-s" : 55},
+            {"name": "Schleuder", "waffe": "schoss mit einer Schleuder auf", "attack-s" : 35},
+            {"name": "Wurfmesser", "waffe": "warf ein Wurfmesser auf", "attack-s" : 45},
+            {"name": "Blasrohr", "waffe": "schoss mit einem Blasrohr auf", "attack-s" : 25},
+            {"name": "Energiepistole", "waffe": "schoss mit einer Energiepistole auf", "attack-s" : 65},
+            {"name": "Laserbogen", "waffe": "schoss mit einem Laserbogen auf", "attack-s" : 70}
+        ],
 
-    "r1": [
-        {"name": "Hand", "waffe" :"schl(ae)gt mit der Hand auf", "attack-s" : 1},
-        {"name": "Stock", "waffe": "schl(ae)gt mit einem Stock auf", "attack-s" : 5},
-        {"name": "Holzscwert", "waffe": "schlug mit einem Schwert gegen", "attack-s" : 10},
-        {"name": "Bogen", "waffe": "scho(sz) mit einem Bogen auf", "attack-s" : 20}
-    ]
-
-
+        "r1": [
+            {"name": "Hand", "waffe": "schl(ae)gt mit der Hand auf", "attack-s" : 1},
+            {"name": "Stock", "waffe": "schl(ae)gt mit einem Stock auf", "attack-s" : 5},
+            {"name": "Holzschwert", "waffe": "schlug mit einem Holzschwert auf", "attack-s" : 10},
+            {"name": "Bogen", "waffe": "schoss mit einem Bogen auf", "attack-s" : 20},
+            {"name": "Schleuder", "waffe": "schoss mit einer Schleuder auf", "attack-s" : 15},
+            {"name": "Stein", "waffe": "warf einen Stein auf", "attack-s" : 8},
+            {"name": "Schleuder mit Kugel", "waffe": "schoss mit einer Schleuder mit Kugel auf", "attack-s" : 18},
+            {"name": "Ziegelstein", "waffe": "warf einen Ziegelstein auf", "attack-s" : 12},
+            {"name": "Kleines Messer", "waffe": "stach mit einem kleinen Messer auf", "attack-s" : 7},
+            {"name": "Kette", "waffe": "schlug mit einer Kette auf", "attack-s" : 14}
+        ]
     }
 ]
