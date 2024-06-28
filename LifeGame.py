@@ -3,7 +3,7 @@ import json
 
 standartwartezeit = 2 #standart wartezeit :)
 class LifeGameMain:#Alle wichtigen abläufe in dieser class
-        def weaponsgetaddon(object1,randommode): 
+        def weaponsgetaddon(object1): 
             with open("weapondmg.json") as f:
                 weapon_data = json.load(f)
                 weaponlist = weapon_data[0]  # Access the dictionary within the list
@@ -58,24 +58,28 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             }
             
             return object1
-        def fight(automode,player1,gegner,die):#Der Kampf
+        def fight(player1,gegner,die):#Der Kampf
             if die > rd.randint(30,301):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
+                print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
                 print("Gegner hat sich als Dämonenkönig entpupt")
-            print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
+            else:
+                if automode == "e":
+                    print("Willst du gegen " + str(gegner["name"]) + " kämpfen?")#Anzeige für den Kampf
+                else:
+                    print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
             if automode == "e":
-                print("")
                 print("")
                 time.sleep(2)
                 print("Anfeuern gibt dem Helden 2% mehr schaden, aber der Gegner fängt an")
                 print("Hinweisen lässt den Helden an fangen, aber der Gegner macht mehr schaden")
                 print("")
-                print("fliehen (f) / kämpfen (k) / hinweisen (h) / anfeuern (a) / Waffetausch (w)")
+                print("fliehen (f/n) / kämpfen (k/j) / hinweisen (h) / anfeuern (a) / waffetausch (w)")
                 f = input()
                 print("")
-                if f == "f": 
+                if f == "f" or f == "n": 
                     print("")
                     print(player1["name"] + " flieht vor " + gegner["name"])
                     print("")
@@ -94,8 +98,10 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                 elif f == "a": 
                     player1["attack-s"] = player1["attack-s"] * 1.2
                 print("")
-            if die < 1: xs = True
+            loopcount = 1
+            loop = 0
             while True:#Loop bis Jemand tod ist
+                loop += 1
                 if gegner["leben"] < 1:#Wer gewonnen/verloren hat
                     print(player1["name"] + " hat gegen " + gegner["name"] + " gewonnen")
                     break
@@ -106,12 +112,14 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                 print(" ")
                 time.sleep(standartwartezeit)#standart wartezeit :)
                 if xs == True:#Player1 schlägt zu
-                    dmg = int(float(player1["attack-s"])*(float(rd.randint(50,150))/float(100)))
+                    if loop >= 6:
+                        loopcount = loopcount*2
+                    dmg = int(float(player1["attack-s"])*(float(rd.randint(80,120))/float(100))*loopcount)
                     gegner["leben"] = gegner["leben"] - dmg
                     print( player1["name"] + " " + player1["waffe"] + " " + gegner["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = False
                 else:#Gegner schlägt zu
-                    dmg = int(float(gegner["attack-s"])*(float(rd.randint(50,150))/float(100)))
+                    dmg = int(float(gegner["attack-s"])*(float(rd.randint(80,120))/float(100))*(float(loopcount)/1000))
                     player1["leben"] = player1["leben"] - dmg
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
@@ -151,11 +159,14 @@ print("")
 print("Automode lässt dich automatisch kämpfen und nicht auswählen was du machen willst.")
 print("Bei Eingabe kannst du auswählen ob du fliehen willst oder kämpfen möchtest und mehr.")
 print("Automode (a) / Eingabe (e)...")
+global automode
 automode = input("Mode = ")
 
 print("")
 print("Random (r) / normal (n)")
+global randommode
 randommode = input("Mode = ")
+
 if randommode != "r":
     if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
         match m:
@@ -229,8 +240,8 @@ elif randommode == "r":
                 r = 1
                 l = 0.75
 
-player1 = {"name": name,"alter": 0,"leben": 200*l, "rank": r}
-player1 = lg.weaponsgetaddon(player1,randommode)
+player1 = {"name": name,"alter": 0,"leben": 100*l, "rank": r}
+player1 = lg.weaponsgetaddon(player1)
 
 moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
 
@@ -286,12 +297,9 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
-                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120-(r*2)))/100)
-                        er = r + rd.randint(-3,0)
-                        if er < 1: er = 1
-                        enemy["rank"] = er
-                        enemy = lg.weaponsgetaddon(enemy,randommode)
-                        enemy = lg.fight(automode,player1,enemy,die*dieten)
+                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy = lg.weaponsgetaddon(enemy)
+                        enemy = lg.fight(player1,enemy,die*dieten)
                         goblin1 = enemy
                         if enemy["leben"] < 1:
                             print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
@@ -301,8 +309,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
             if player1["leben"] < 1000000:
-                if player1["leben"] > 200:player1["leben"] += 5
-                else:player1["leben"] += 25
+                if player1["leben"] > 200:player1["leben"] += 5*r
+                else:player1["leben"] += 25*r
     if die > 10:
         print("Level Up")
         dieten += 1
@@ -401,8 +409,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         r = 1
                         l = 0.75
                 
-        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 210*l, "waffe": player1["waffe"], "rank": r}
-        player1 = lg.weaponsgetaddon(player1,randommode)
+        player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 100*l, "waffe": player1["waffe"], "rank": r}
+        player1 = lg.weaponsgetaddon(player1)
     time.sleep(standartwartezeit)
 
 time.sleep(10)
