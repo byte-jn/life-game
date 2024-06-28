@@ -1,6 +1,7 @@
 import random as rd, time #importieren von verschiedensten Sachen
 import json
 
+global standartwartezeit
 standartwartezeit = 2 #standart wartezeit :)
 class LifeGameMain:#Alle wichtigen abläufe in dieser class
         def weaponsgetaddon(object1): 
@@ -58,7 +59,8 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             }
             
             return object1
-        def fight(player1,gegner,die):#Der Kampf
+        def fight(player1,gegner,die, a):#Der Kampf
+            automode = a
             if die > rd.randint(30,301):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
@@ -72,7 +74,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             else: xs = False
             if automode == "e":
                 print("")
-                time.sleep(2)
+                time.sleep(standartwartezeit)
                 print("Anfeuern gibt dem Helden 2% mehr schaden, aber der Gegner fängt an")
                 print("Hinweisen lässt den Helden an fangen, aber der Gegner macht mehr schaden")
                 print("")
@@ -87,17 +89,16 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     return gegner
                 elif f == "h":
                     player1["attack-s"] = player1["attack-s"] / 1.2
-                    if rd.randint (1,3) == 1:
-                        xs = False
-                    else:
-                        xs = True
+                    xs = True
                 elif f == "w":
                     player1 = lg.weaponsgetaddon(player1)
                     print(player1["name"] + " hat jetzt eine neue Waffe")
                     print("")
                 elif f == "a": 
                     player1["attack-s"] = player1["attack-s"] * 1.2
+                    xs = False
                 print("")
+            time.sleep(standartwartezeit)
             loopcount = 1
             loop = 0
             while True:#Loop bis Jemand tod ist
@@ -110,7 +111,8 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     break
                 print("(" + player1["name"] + "-HP: " + str(player1["leben"]) + " / " + gegner["name"] + "-HP: " + str(gegner["leben"]) + ")")
                 print(" ")
-                time.sleep(standartwartezeit)#standart wartezeit :)
+                if loop < 10:
+                    time.sleep(standartwartezeit)#standart wartezeit :)
                 if xs == True:#Player1 schlägt zu
                     if loop >= 6:
                         loopcount = loopcount*2
@@ -171,9 +173,10 @@ if randommode != "r":
     if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
         match m:
             case "dev": 
-                r = 10
+                r = 11
                 l = 10000
                 standartwartezeit = 0.2
+                m = "ssss"
             case "sss": 
                 r = 9
                 l = 1000
@@ -209,9 +212,10 @@ elif randommode == "r":
     if m in {"dev","s", "a", "b", "c", "d", "e", "f"}:
         match m:
             case "dev": 
-                r = 10
+                r = 11
                 l = 10000
                 standartwartezeit = 0.2
+                m = "ssss"
             case "sss": 
                 r = 9
                 l = 1000
@@ -243,7 +247,7 @@ elif randommode == "r":
 player1 = {"name": name,"alter": 0,"leben": 100*l, "rank": r}
 player1 = lg.weaponsgetaddon(player1)
 
-moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen", "rank": 20}
+moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen", "rank": 10}
 
 die = 0
 dieten = 1
@@ -293,121 +297,133 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     print("")
     time.sleep(standartwartezeit)
 
-    if rd.randint(r,20) > 10: #Kampf
+    if rd.randint(r,25) > 15: #Kampf
+        if rd.randint(1,5) != 1:
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
                         enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
                         enemy = lg.weaponsgetaddon(enemy)
-                        enemy = lg.fight(player1,enemy,die*dieten)
+                        enemy = lg.fight(player1,enemy,die*dieten,automode)
                         goblin1 = enemy
                         if enemy["leben"] < 1:
                             print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
-                            die += 4 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            die += enemy["rank"] #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                             print(" ")
                             print(" ")
+        else:
+                        time.sleep(standartwartezeit)
+                        enemy1 = rd.choice(enemylist)
+                        enemy1["alter"] += rd.randint(0,30)
+                        enemy1["leben"] = enemy1["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy1 = lg.weaponsgetaddon(enemy1)
+                        enemy = rd.choice(enemylist)
+                        enemy["alter"] += rd.randint(0,30)
+                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy = lg.weaponsgetaddon(enemy)
+                        print("Harald beobachtet kampf zwischen " + str(enemy["name"]) + " und " + str(enemy1["name"]))
+                        print(" ")
+                        print(" ")
+                        enemy = lg.fight(enemy,enemy1,die*dieten,"a")
+                        if enemy["leben"] < 1:
+                            print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
+                            print(" ")
+                            print(" ")
+                        elif enemy1["leben"] < 1:
+                            print(enemy1["name"] + " ist gestorben er war " + str(enemy1["alter"]) + " Jahre alt")
+                            print(" ")
+                            print(" ")
+
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
             if player1["leben"] < 1000000:
                 if player1["leben"] > 200:player1["leben"] += 5*r
                 else:player1["leben"] += 25*r
-    if die > 10:
+    if die > 15:
+        time.sleep(standartwartezeit)
         print("Level Up")
         dieten += 1
         die -= 10
         r += 1
-        if m == "f":
-            m = "e"
-        elif m == "e":
-            m = "d"
-        elif m == "d":
-            m = "c"
-        elif m == "c":
-            m = "b"
-        elif m == "b":
-            m = "a"
-        elif m == "a":
-            m = "s"
-        elif m == "s":
-            m = "ss"
-        elif m == "ss":
-            m = "sss"
-        elif m == "sss":
-            print(player1["name"] + "ist jetzt auf dem maximalem Level")
-            r = 10
-            l = 1000000000
+        print(str(player1["name"]) + " ist jetzt level " + str(r)+ ".")
+        print("")
         if randommode != "r":
-            if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
+            if m in {"dev","ssss","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
                 match m:
+                    case "ssss":
+                        l = 1000000
+                        m = "ssss"
                     case "dev": 
-                        r = 10
                         l = 10000
                         standartwartezeit = 0.2
+                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        m = "ssss"
                     case "sss": 
-                        r = 9
                         l = 1000
+                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        m = "ssss"
                     case "ss": 
-                        r = 8
                         l = 100
+                        m = "sss"
                     case "s": 
-                        r = 7
                         l = 10
+                        m = "ss"
                     case "a": 
-                        r = 6
                         l = 5
+                        m = "s"
                     case "b": 
-                        r = 5
                         l = 2
+                        m = "a"
                     case "c": 
-                        r = 4
                         l = 1.5
+                        m = "b"
                     case "d": 
-                        r = 3
                         l = 1.25
+                        m = "c"
                     case "e": 
-                        r = 2
                         l = 1
+                        m = "d"
                     case "f": 
-                        r = 1
                         l = 0.75
-            else:
-                r = 3
-                l = 1.5
-                m = "d"
+                        m = "e" 
         elif randommode == "r":
-            if m in {"dev","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
+            if m in {"dev","ssss","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
                 match m:
-                    case "dev": 
-                        r = 10
-                        l = 10000
-                        standartwartezeit = 0.2
-                    case "sss": 
-                        r = 9
+                    case "ssss":
+                        l = 1000000
+                        m = "ssss"
+                    case "dev":
                         l = 1000
+                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        m = "ssss"
+                    case "sss": 
+                        l = 1000
+                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        m = "ssss"
                     case "ss": 
-                        r = 8
                         l = 100
+                        m = "sss"
                     case "s": 
-                        r = 7
                         l = 10
+                        m = "ss"
                     case "a": 
-                        r = 6
                         l = 5
+                        m = "s"
                     case "b": 
-                        r = 5
                         l = 2
+                        m = "a"
                     case "c": 
-                        r = 4
                         l = 1.5
+                        m = "b"
                     case "d": 
-                        r = 3
                         l = 1.25
+                        m = "c"
                     case "e": 
-                        r = 2
                         l = 1
+                        m = "d"
                     case "f": 
-                        r = 1
                         l = 0.75
+                        m = "e" 
                 
         player1 = {"name": player1["name"],"alter": player1["alter"],"attack-s": player1["attack-s"]*1.03,"leben": 100*l, "waffe": player1["waffe"], "rank": r}
         player1 = lg.weaponsgetaddon(player1)
