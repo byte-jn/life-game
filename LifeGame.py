@@ -243,7 +243,7 @@ elif randommode == "r":
 player1 = {"name": name,"alter": 0,"leben": 100*l, "rank": r}
 player1 = lg.weaponsgetaddon(player1)
 
-moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen"}
+moa = {"name": "Der Dämonenkönig","alter": rd.randint(101,1000000),"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen", "rank": 20}
 
 die = 0
 dieten = 1
