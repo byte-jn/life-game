@@ -64,7 +64,7 @@
     {"name": "Supernudel", "alter": 1, "leben": 1, "rank": 1},
     {"name": "Kartoffelkrieger", "alter": 30, "leben": 150, "rank": 5},
     {"name": "Riesenmarshmallow", "alter": 5, "leben": 200, "rank": 3},
-    {"name": "Plüschdrache", "alter": 50, "leben": 1000, "rank": 9},
+    {"name": "Pl(ue)schdrache", "alter": 50, "leben": 1000, "rank": 9},
     {"name": "Schneeflockengolem", "alter": 500, "leben": 500, "rank": 8},
     {"name": "Quallenbombe", "alter": 1, "leben": 500, "rank": 7},
     {"name": "Bananenpirat", "alter": 40, "leben": 80, "rank": 6},
