@@ -58,7 +58,8 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
             }
             
             return object1
-        def fight(player1,gegner,die):#Der Kampf
+        def fight(player1,gegner,die, a):#Der Kampf
+            automode = a
             if die > rd.randint(30,301):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
@@ -293,25 +294,49 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
     print("")
     time.sleep(standartwartezeit)
 
-    if rd.randint(r,20) > 10: #Kampf
+    if rd.randint(r,25) > 15: #Kampf
+        if rd.randint(1,5) != 1:
                         time.sleep(standartwartezeit)
                         enemy = rd.choice(enemylist)
                         enemy["alter"] += rd.randint(0,30)
                         enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
                         enemy = lg.weaponsgetaddon(enemy)
-                        enemy = lg.fight(player1,enemy,die*dieten)
+                        enemy = lg.fight(player1,enemy,die*dieten,automode)
                         goblin1 = enemy
                         if enemy["leben"] < 1:
                             print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
-                            die += 4 #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
+                            die += enemy["rank"] #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
                             print(" ")
                             print(" ")
+        else:
+                        time.sleep(standartwartezeit)
+                        enemy1 = rd.choice(enemylist)
+                        enemy1["alter"] += rd.randint(0,30)
+                        enemy1["leben"] = enemy1["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy1 = lg.weaponsgetaddon(enemy1)
+                        enemy = rd.choice(enemylist)
+                        enemy["alter"] += rd.randint(0,30)
+                        enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
+                        enemy = lg.weaponsgetaddon(enemy)
+                        print("Harald beobachtet kampf zwischen " + str(enemy["name"]) + " und " + str(enemy1["name"]))
+                        print(" ")
+                        print(" ")
+                        enemy = lg.fight(enemy,enemy1,die*dieten,"a")
+                        if enemy["leben"] < 1:
+                            print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
+                            print(" ")
+                            print(" ")
+                        elif enemy1["leben"] < 1:
+                            print(enemy1["name"] + " ist gestorben er war " + str(enemy1["alter"]) + " Jahre alt")
+                            print(" ")
+                            print(" ")
+
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
             if player1["leben"] < 1000000:
                 if player1["leben"] > 200:player1["leben"] += 5*r
                 else:player1["leben"] += 25*r
-    if die > 10:
+    if die > 15:
         print("Level Up")
         dieten += 1
         die -= 10
