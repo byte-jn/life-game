@@ -78,7 +78,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                 print("Anfeuern gibt dem Helden 2% mehr schaden, aber der Gegner fängt an")
                 print("Hinweisen lässt den Helden an fangen, aber der Gegner macht mehr schaden")
                 print("")
-                print("fliehen (f/n) / kämpfen (k/j) / hinweisen (h) / anfeuern (a) / waffetausch (w)")
+                print("fliehen (f/n) / kämpfen (k/j) / hinweisen (h) / anfeuern (a) / waffetausch (w) / Huhn Kampf (c)")
                 f = input()
                 print("")
                 if f == "f" or f == "n": 
@@ -97,6 +97,10 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                 elif f == "a": 
                     player1["attack-s"] = player1["attack-s"] * 1.2
                     xs = False
+                elif f == "c":
+                    player = player1
+                    player1 = {"name": "Huhn", "alter": 1, "leben": 5, "rank": 1}
+                    player1 = lg.weaponsgetaddon(player1)
                 print("")
             time.sleep(standartwartezeit)
             loopcount = 1
@@ -111,8 +115,7 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     break
                 print("(" + player1["name"] + "-HP: " + str(player1["leben"]) + " / " + gegner["name"] + "-HP: " + str(gegner["leben"]) + ")")
                 print(" ")
-                if loop < 10:
-                    time.sleep(standartwartezeit)#standart wartezeit :)
+                time.sleep(standartwartezeit/(loop/2))#standart wartezeit :)
                 if xs == True:#Player1 schlägt zu
                     if loop >= 6:
                         loopcount = loopcount*2
@@ -130,6 +133,8 @@ class LifeGameMain:#Alle wichtigen abläufe in dieser class
                     player1["attack-s"] = player1["attack-s"] / 1.2
                 elif f == "h": 
                     player1["attack-s"] = player1["attack-s"] * 1.2
+                elif f == "c":
+                    player1 = player
             return gegner #Alle wichtigen Infos vom gegner zurück geben
         def replace_umlauts(data):
             if isinstance(data, str):
@@ -309,8 +314,8 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         if enemy["leben"] < 1:
                             print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
                             die += enemy["rank"] #die beschreibt wie oft jemand schon gestorben sind. Um später dann den Dämonenkönig auszuwählen
-                            print(" ")
-                            print(" ")
+                        print(" ")
+                        print(" ")
         else:
                         time.sleep(standartwartezeit)
                         enemy1 = rd.choice(enemylist)
@@ -321,18 +326,16 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
                         enemy["alter"] += rd.randint(0,30)
                         enemy["leben"] = enemy["leben"] * int(float(l) * float(rd.randint(80 ,120))/100)
                         enemy = lg.weaponsgetaddon(enemy)
-                        print("Harald beobachtet kampf zwischen " + str(enemy["name"]) + " und " + str(enemy1["name"]))
+                        print(player1["name"] + " beobachtet kampf zwischen " + str(enemy["name"]) + " und " + str(enemy1["name"]))
                         print(" ")
                         print(" ")
                         enemy = lg.fight(enemy,enemy1,die*dieten,"a")
                         if enemy["leben"] < 1:
                             print(enemy["name"] + " ist gestorben er war " + str(enemy["alter"]) + " Jahre alt")
-                            print(" ")
-                            print(" ")
                         elif enemy1["leben"] < 1:
                             print(enemy1["name"] + " ist gestorben er war " + str(enemy1["alter"]) + " Jahre alt")
-                            print(" ")
-                            print(" ")
+                        print(" ")
+                        print(" ")
 
     if die > 0:
         if player1["leben"] > 0: #Regenerierung Player1
