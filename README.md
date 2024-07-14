@@ -9,4 +9,5 @@ Umlaute möglich. Kein Buchstaben mit keinem anfangsbuchstaben möglich.
 - (Ue) = Ü
 - (sz) = ß
 
+
 You need Python 3.11 to run it.
