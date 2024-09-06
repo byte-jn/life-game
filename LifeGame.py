@@ -10,6 +10,8 @@ moa = {"name": "Der Dämonenkönig","alter": 24000,"attack-s": 90000000,"leben":
 
 player1, die, dieten, r, l, m, automode, randommode, standartwartezeit = begin(standartwartezeit)
 
+verblist, enemylist, locationslist = addon()
+
 while True:# Wiederholung Unendlich mit einigen außnahmen
     goblin1 = moa #goblin1 ist der letze gegen den man gespielt hat
     if goblin1["leben"] < 1 and goblin1["name"] == moa["name"]:#Ende wenn der Dämonenkönig stirbt
@@ -26,9 +28,7 @@ while True:# Wiederholung Unendlich mit einigen außnahmen
         break
     
     player1["alter"] += 1
-
-    verblist, enemylist, locationslist = addon()
-
+    
     location(verblist, enemylist, player1, locationslist, standartwartezeit)
 
     if rd.randint(r,25) > 15: #Kampf
