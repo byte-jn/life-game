@@ -103,7 +103,7 @@ def fight(player1,gegner,die, a, moa, standartwartezeit, randommode):#Der Kampf
                     print( player1["name"] + " " + player1["waffe"] + " " + gegner["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = False
                 else:#Gegner schlägt zu
-                    dmg = int(float(gegner["attack-s"])*(float(rd.randint(80,120))/float(100))*(float(loopcount)/1000))
+                    dmg = int(float(gegner["attack-s"])*(float(rd.randint(80,120))/float(100))*loopcount)
                     player1["leben"] = player1["leben"] - dmg
                     print( gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". Und macht " + str(dmg) + " Schaden")
                     xs = True
