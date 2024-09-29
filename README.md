@@ -1,10 +1,9 @@
-# life-game-de
-Eine generierung einer geschichte zu deinem Helden im Terminal mit Python. 
+# life-game-en
+A generation of a story about your hero in the terminal using Python.
 
-Wenn man das Python script startet öffnet sich das terminal und es wird eine geschichte von dem Helden generiert. Nur in Text form. Dabei gibt es auch kämpfe und verschiedene Waffentypen. Eis ist ein autobattler heißt man kann nur zugucken was Harald so macht.
-Man kann auch in denn Dateien enemy.json und location.json neue Orte und Menschen hinzufügen. 
-Umlaute möglich. Kein Buchstaben mit keinem anfangsbuchstaben möglich.
-- (Ae) = Ä
-- (Oe) = Ö
-- (Ue) = Ü
-- (sz) = ß
+When the Python script is started, the terminal opens, and a story about the hero is generated. It is presented only in text form. There are also battles and different types of weapons. Ice is an auto-battler, which means you can only watch what Harald does. You can also add new locations and people in the files enemy.json and location.json. Umlauts are possible. No letters with specific starting letters are allowed.
+
+(Ae) = Ä
+(Oe) = Ö
+(Ue) = Ü
+(sz) = ß
