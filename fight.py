@@ -45,11 +45,10 @@ def fight(player1,gegner,die, a, moa, standartwartezeit, randommode):#Der Kampf
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
                 print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
                 print("Gegner hat sich als Dämonenkönig entpupt")
+            if automode == "e":
+                 print("Willst du gegen " + str(gegner["name"]) + " (HP: " + str(gegner["leben"]) + ") kämpfen?")#Anzeige für den Kampf
             else:
-                if automode == "e":
-                    print("Willst du gegen " + str(gegner["name"]) + " kämpfen?")#Anzeige für den Kampf
-                else:
-                    print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
+                 print(player1["name"] + " kämpft gegen " + gegner["name"])#Anzeige für den Kampf
             if rd.randint(1,2) == 1:xs = True #Wer fängt an? Entscheidung durch Zufall
             else: xs = False
             if automode == "e":
