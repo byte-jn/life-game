@@ -8,6 +8,3 @@ Umlaute möglich. Kein Buchstaben mit keinem anfangsbuchstaben möglich.
 - (Oe) = Ö
 - (Ue) = Ü
 - (sz) = ß
-
-
-You need Python 3.11 to run it.
