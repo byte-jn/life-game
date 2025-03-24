@@ -33,6 +33,7 @@ def LifeGame():
         location(verblist, enemylist, player1, locationslist, standartwartezeit)
 
         if rd.randint(r,25) > 15: #Kampf
+            print("Waffenschaden: " + str(player1["attack-s"]))
             player1, enemy, goblin1 ,die = createfight(player1, die, dieten, automode, enemylist, standartwartezeit, randommode, moa)
         if die > 0:
             if player1["leben"] > 0: #Regenerierung Player1
