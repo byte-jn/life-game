@@ -40,6 +40,7 @@ def createfight(player1, die, dieten, automode, enemylist, standartwartezeit, ra
 
 
 def fight(player1,gegner,die, a, moa, standartwartezeit, randommode):#Der Kampf
+            print(player1["leben"],player1["waffe"])
             automode = a
             if die > rd.randint(30,301):
                 gegner = moa #zufällige Variable für den Spawn des Dämonenkönigs
