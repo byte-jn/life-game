@@ -7,7 +7,7 @@ def LifeGame():
     from begin import begin
 
     standartwartezeit = 2 # standard waiting time :)
-    moa = {"name": "The Demon King","alter": 24000,"attack-s": 90000000,"leben": 500000,"waffe": "schießt mit Atomic gegen", "rank": 10}
+    moa = {"name": "The Demon King","alter": 24000,"attack-s": 90000000,"leben": 500000,"waffe": "shoots with Atomic at", "rank": 10}
 
     player1, die, dieten, r, l, m, automode, randommode, standartwartezeit = begin(standartwartezeit)
 
@@ -17,7 +17,7 @@ def LifeGame():
         goblin1 = moa # goblin1 is the last opponent fought
         if goblin1["leben"] < 1 and goblin1["name"] == moa["name"]:# End if the Demon King dies
             print("")
-            print(player1["name"] + " has won against " + goblin1["name"] + " gewonnen")
+            print(player1["name"] + " has won against " + goblin1["name"])
             print("Wait, What?")
             time.sleep(standartwartezeit)
             print("In any case, the world is now free")
@@ -32,7 +32,8 @@ def LifeGame():
     
         location(verblist, enemylist, player1, locationslist, standartwartezeit)
 
-        if rd.randint(r,25) > 15: # Fight
+        if rd.randint(r,25) > 15: #Fight
+            print("Weapon damage: " + str(player1["attack-s"]))
             player1, enemy, goblin1 ,die = createfight(player1, die, dieten, automode, enemylist, standartwartezeit, randommode, moa)
         if die > 0:
             if player1["leben"] > 0: # Regeneration for Player1

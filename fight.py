@@ -37,46 +37,39 @@ def createfight(player1, die, dieten, automode, enemylist, standartwartezeit, ra
                         print(" ")
                         print(" ")
     return player1, enemy, goblin1 ,die
-
-def fight(player1, gegner, die, a, moa, standartwartezeit, randommode):  # The fight
+def fight(player1,enemy,die, a, moa, standartwartezeit, randommode):#Der Kampf
     automode = a
-    if die > rd.randint(30, 301):
-        gegner = moa  # random variable for the spawn of the Demon King
-        print(player1["name"] + " fights against " + gegner["name"])  # Display for the fight
-        print("The opponent has revealed himself as the Demon King.")
-        
-    if automode == "i":
-        print("Do you want to fight against " + str(gegner["name"]) + " (HP: " + str(gegner["leben"]) + ")?")
+    if die > rd.randint(30,301):
+        enemy = moa #random variable for the Demon King spawn
+        print(player1["name"] + " fights against " + enemy["name"])#Display for the fight
+        print("Opponent has revealed himself as the Demon King")
+    if automode == "e":
+            print("Do you want to fight against " + str(enemy["name"]) + " (HP: " + str(enemy["leben"]) + ")?")#Display for the fight
     else:
-        print(player1["name"] + " fights against " + gegner["name"])
-        
-    if rd.randint(1, 2) == 1:
-        xs = True  # Who starts? Decision by chance
-    else:
-        xs = False
-        
-    if automode == "i":
+            print(player1["name"] + " fights against " + enemy["name"])#Display for the fight
+    if rd.randint(1,2) == 1:xs = True #Who starts? Decision by chance
+    else: xs = False
+    if automode == "e":
         print("")
         time.sleep(standartwartezeit)
-        print("Cheering gives the hero 2% more damage, but the opponent goes first.")
-        print("Hints allow the hero to start, but the opponent deals more damage.")
+        print("Cheering gives the hero 2% more damage, but the opponent starts")
+        print("Advising lets the hero start, but the opponent deals more damage")
         print("")
-        print("Flee (f/n) / Fight (k/y) / Hint (h) / Cheer (a) / Weapon swap (w) / Chicken fight (c)")
+        print("flee (f/n) / fight (k/j) / advise (h) / cheer (a) / weapon swap (w) / Chicken fight (c)")
         f = input()
         print("")
-        
         if f == "f" or f == "n": 
             print("")
-            print(player1["name"] + " flees from " + gegner["name"])
+            print(player1["name"] + " flees from " + enemy["name"])
             print("")
             print("")
-            return gegner
+            return enemy, player1
         elif f == "h":
             player1["attack-s"] = player1["attack-s"] / 1.2
             xs = True
         elif f == "w":
             player1 = weaponsgetaddon(player1, randommode)
-            print(player1["name"] + " has a new weapon now.")
+            print(player1["name"] + " now has a new weapon")
             print("")
         elif f == "a": 
             player1["attack-s"] = player1["attack-s"] * 1.2
@@ -86,43 +79,37 @@ def fight(player1, gegner, die, a, moa, standartwartezeit, randommode):  # The f
             player1 = {"name": "Chicken", "alter": 1, "leben": 5, "rank": 1}
             player1 = weaponsgetaddon(player1, randommode)
         print("")
-        
     time.sleep(standartwartezeit)
     loopcount = 1
     loop = 0
-    
-    while True:  # Loop until someone dies
+    while True:#Loop until someone is dead
         loop += 1
-        if gegner["leben"] < 1:  # Who won/lost
-            print(player1["name"] + " has defeated " + gegner["name"])
+        if enemy["leben"] < 1:#Who won/lost
+            print(player1["name"] + " has won against " + enemy["name"])
             break
-        elif player1["leben"] < 1:
-            print(player1["name"] + " has lost to " + gegner["name"])
+        elif  player1["leben"] < 1:
+            print(player1["name"] + " has lost against " + enemy["name"])
             break
-            
-        print("(" + player1["name"] + "-HP: " + str(player1["leben"]) + " / " + gegner["name"] + "-HP: " + str(gegner["leben"]) + ")")
+        print("(" + player1["name"] + "-HP: " + str(player1["leben"]) + " / " + enemy["name"] + "-HP: " + str(enemy["leben"]) + ")")
         print(" ")
-        time.sleep(standartwartezeit / (loop / 2))  # standard wait time :)
-        
-        if xs == True:  # Player1 hitting
+        time.sleep(standartwartezeit/(loop/2))#standard waiting time :)
+        if xs == True:#Player1 attacks
             if loop >= 6:
-                loopcount = loopcount * 2
-            dmg = int(float(player1["attack-s"]) * (float(rd.randint(80, 120)) / float(100)) * loopcount)
-            gegner["leben"] = gegner["leben"] - dmg
-            print(player1["name"] + " " + player1["waffe"] + " " + gegner["name"] + ". And deals " + str(dmg) + " damage.")
+                loopcount = loopcount*2
+            dmg = int(float(player1["attack-s"])*(float(rd.randint(80,120))/float(100))*loopcount)
+            enemy["leben"] = enemy["leben"] - dmg
+            print( player1["name"] + " " + player1["waffe"] + " " + enemy["name"] + ". And deals " + str(dmg) + " damage")
             xs = False
-        else:  # Opponent hitting
-            dmg = int(float(gegner["attack-s"]) * (float(rd.randint(80, 120)) / float(100)) * loopcount)
+        else:#Opponent attacks
+            dmg = int(float(enemy["attack-s"])*(float(rd.randint(80,120))/float(100))*loopcount)
             player1["leben"] = player1["leben"] - dmg
-            print(gegner["name"] + " " + gegner["waffe"] + " " + player1["name"] + ". And deals " + str(dmg) + " damage.")
+            print( enemy["name"] + " " + enemy["waffe"] + " " + player1["name"] + ". And deals " + str(dmg) + " damage")
             xs = True
-            
-    if automode == "i":
+    if automode == "e":
         if f == "a":
             player1["attack-s"] = player1["attack-s"] / 1.2
         elif f == "h": 
             player1["attack-s"] = player1["attack-s"] * 1.2
         elif f == "c":
             player1 = player
-            
-    return gegner, player1  # Return all important info about the enemy
+    return enemy, player1 #Return all important info about the opponent
