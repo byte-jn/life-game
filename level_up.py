@@ -7,7 +7,7 @@ def levelup(die,dieten,randommode,player1,standartwartezeit,r,m,l):
         dieten += 1
         die -= 10
         r += 1
-        print(str(player1["name"]) + " ist jetzt level " + str(r)+ ".")
+        print(str(player1["name"]) + " is now level " + str(r)+ ".")
         print("")
         if randommode != "r":
             if m in {"dev","ssss","sss","ss","s", "a", "b", "c", "d", "e", "f"}:
@@ -18,11 +18,11 @@ def levelup(die,dieten,randommode,player1,standartwartezeit,r,m,l):
                     case "dev": 
                         l = 10000
                         standartwartezeit = 0.2
-                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        print(player1["name"] + " is now at the maximum level")
                         m = "ssss"
                     case "sss": 
                         l = 1000
-                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        print(player1["name"] + " is now at the maximum level")
                         m = "ssss"
                     case "ss": 
                         l = 100
@@ -56,11 +56,11 @@ def levelup(die,dieten,randommode,player1,standartwartezeit,r,m,l):
                         m = "ssss"
                     case "dev":
                         l = 1000
-                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        print(player1["name"] + "is now at the maximum level")
                         m = "ssss"
                     case "sss": 
                         l = 1000
-                        print(player1["name"] + "ist jetzt auf dem maximalem Level")
+                        print(player1["name"] + "is now at the maximum level")
                         m = "ssss"
                     case "ss": 
                         l = 100

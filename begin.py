@@ -1,17 +1,17 @@
-from weapons import weaponsgetaddon
+from weapons import weaponsgetaddon # importing various things
 
 def begin(standartwartezeit):
-    print("Gebe einen Namen ein... ")
+    print("Enter a name... ")
     name = input()
     print(" ")
 
-    print("Wie stark willst du sein? (s/a/b/c/d/e/f)?")
-    m = input("Stärke = ")
+    print("How strong do you want to be? (s/a/b/c/d/e/f)?")
+    m = input("Strength = ")
 
     print("")
-    print("Automode lässt dich automatisch kämpfen und nicht auswählen was du machen willst.")
-    print("Bei Eingabe kannst du auswählen ob du fliehen willst oder kämpfen möchtest und mehr.")
-    print("Automode (a) / Eingabe (e)...")
+    print("Automode allows you to fight automatically without choosing what you want to do.")
+    print("With input, you can choose whether you want to flee or fight and more.")
+    print("Automode (a) / Input (i)...")
     global automode
     automode = input("Mode = ")
 
