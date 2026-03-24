@@ -1,0 +1,7 @@
+{
+  "name": "Bow",
+  "durability": 60,
+  "damage": 8,
+  "coolDown": 1.0
+}
+

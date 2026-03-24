@@ -1,32 +1,5 @@
 {
   "name": "chicken",
   "health": 100,
-  "weapon": [
-    {
-      "name": "Iron Sword",
-      "durability": 250,
-      "damage": 7,
-      "coolDown": 1.2,
-      "enchantments": [
-        {
-          "name": "Sharpness",
-          "description": "hot",
-          "change": {
-            "durabilityIncrease": -5,
-            "damageIncrease": 10,
-            "coolDownIncrease": 0
-          }
-        },
-        {
-          "name": "Fire",
-          "description": "hotter",
-          "change": {
-            "durabilityIncrease": -10,
-            "damageIncrease": 15,
-            "coolDownIncrease": 10
-          }
-        }
-      ]
-    }
-  ]
+  "weapon": ["Iron Sword"]
 }

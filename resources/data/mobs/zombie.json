@@ -1,0 +1,5 @@
+{
+  "name": "zombie",
+  "health": 150,
+  "weapon": ["Stone Axe"]
+}

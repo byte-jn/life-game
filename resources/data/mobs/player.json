@@ -1,0 +1,5 @@
+{
+  "name": "player",
+  "health": 120,
+  "weapon": ["Sword"]
+}

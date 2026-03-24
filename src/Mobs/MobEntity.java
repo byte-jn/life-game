@@ -1,31 +1,21 @@
 package Mobs;
 
 import Items.Weapon;
-
 import java.util.ArrayList;
 
-public class MobEntity {
-    private String name;
-    private int health;
-    private ArrayList<Weapon> weapon;
+public class MobEntity extends Entity {
+    private ArrayList<String> weapon;
 
-    public MobEntity() {}
+    public MobEntity() {
+        super();
+    }
 
-    public MobEntity(String name, int health, ArrayList<Weapon> weapon) {
-        this.name = name;
-        this.health = health;
+    public MobEntity(String name, int health, ArrayList<String> weapon) {
+        super(name, health);
         this.weapon = weapon;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public ArrayList<Weapon> getWeapon() {
+    public ArrayList<String> getWeapon() {
         return weapon;
     }
 }

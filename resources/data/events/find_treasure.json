@@ -1,0 +1,6 @@
+{
+  "name": "find_treasure",
+  "description": "You find a hidden treasure chest!",
+  "effect": "gain_item"
+}
+

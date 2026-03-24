@@ -1,0 +1,6 @@
+{
+  "name": "lake",
+  "description": "A calm lake surrounded by reeds and fish.",
+  "possibleEvents": ["meet_traveler"]
+}
+

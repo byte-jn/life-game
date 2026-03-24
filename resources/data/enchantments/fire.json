@@ -1,0 +1,10 @@
+{
+  "name": "Fire",
+  "description": "hotter",
+  "change": {
+    "durabilityIncrease": -10,
+    "damageIncrease": 15,
+    "coolDownIncrease": 10
+  }
+}
+

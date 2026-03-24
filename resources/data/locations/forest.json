@@ -1,0 +1,6 @@
+{
+  "name": "forest",
+  "description": "A dense forest with tall trees and hidden secrets.",
+  "possibleEvents": ["ambush", "find_treasure", "meet_traveler"]
+}
+
