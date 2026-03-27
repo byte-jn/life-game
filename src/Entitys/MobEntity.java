@@ -1,6 +1,5 @@
-package Mobs;
+package Entitys;
 
-import Items.Weapon;
 import java.util.ArrayList;
 
 public class MobEntity extends Entity {

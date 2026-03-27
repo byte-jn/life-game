@@ -1,0 +1,8 @@
+{
+  "difficultySlogan": "Don't hurt me",
+  "difficulty": "easy",
+  "difficultyCode": 2,
+  "health": 1000,
+  "enemyDamageMultiplier": 0.9,
+  "weapon": ["Sword"]
+}

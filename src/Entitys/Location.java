@@ -1,4 +1,4 @@
-package Locations;
+package Entitys;
 
 import java.util.List;
 

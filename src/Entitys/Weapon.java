@@ -1,8 +1,4 @@
-package Items;
-
-import ItemsValue.Enchantment;
-
-import java.util.ArrayList;
+package Entitys;
 
 public class Weapon {
     private String name;

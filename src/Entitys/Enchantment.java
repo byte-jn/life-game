@@ -1,4 +1,4 @@
-package ItemsValue;
+package Entitys;
 
 public class Enchantment {
     private String name;

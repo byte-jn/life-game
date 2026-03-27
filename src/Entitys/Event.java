@@ -1,4 +1,4 @@
-package Events;
+package Entitys;
 
 public class Event {
     private String name;

@@ -1,4 +1,4 @@
-package Mobs;
+package Entitys;
 
 public abstract class Entity {
     protected String name;

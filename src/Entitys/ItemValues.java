@@ -1,4 +1,4 @@
-package ItemsValue;
+package Entitys;
 
 public class ItemValues {
     private double durabilityIncrease;

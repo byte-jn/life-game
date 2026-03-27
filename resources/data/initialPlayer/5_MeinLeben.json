@@ -1,0 +1,10 @@
+{
+  "difficultySlogan": "Mein Leben",
+  "difficulty": "permadeath",
+  "difficultyCode": 5,
+  "name" : "Real Man",
+  "health": 800,
+  "enemyDamageMultiplier": 5,
+  "weapon": ["Sword"],
+  "respawn": false
+}

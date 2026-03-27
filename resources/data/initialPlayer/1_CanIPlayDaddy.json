@@ -1,0 +1,9 @@
+{
+  "difficultySlogan": "Can I play, Daddy?",
+  "difficulty": "very easy",
+  "difficultyCode": 1,
+  "name" : "Baby",
+  "health": 1000,
+  "enemyDamageMultiplier": 0.8,
+  "weapon": ["Sword"]
+}
