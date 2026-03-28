@@ -1,5 +1,7 @@
 {
   "name": "zombie",
   "health": 150,
+  "maxHealth": 100,
+  "regenerationRate": 10,
   "weapon": ["Stone Axe"]
 }

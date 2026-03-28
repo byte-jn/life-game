@@ -25,9 +25,10 @@ public class Construct {
         enchantments = EntityRepository.getEnchantments();
         locations = EntityRepository.getLocations();
         events = EntityRepository.getEvents();
+
         player = choseDifficulty(EntityRepository.getPlayers());
 
-        configurePlayerName();
+        configurePlayer();
     }
 
     private Player choseDifficulty(List<Player> players) {
@@ -81,8 +82,9 @@ public class Construct {
     /**
      * Configures the name, by asking the user if not hard or very hard
      */
-    private void configurePlayerName() {
+    private void configurePlayer() {
         if (!player.getName().isEmpty()) {
+            player.configure();
             return;
         }
         System.out.println("How would you like to be known under: ");
@@ -97,6 +99,9 @@ public class Construct {
         System.out.println("Entities.Mobs:");
         for (MobEntity mob : mobs) {
             System.out.println("  Name: " + mob.getName());
+            System.out.println("    Health: " + mob.health);
+            System.out.println("    Max Health: " + mob.getMaxHealth());
+            System.out.println("    Regeneration Rate: " + mob.getRegenerationRate());
         }
         System.out.println("Weapons:");
         for (Weapon weapon : weapons) {
@@ -121,6 +126,8 @@ public class Construct {
         System.out.println("Player:");
         System.out.println("  Name: " + player.getName());
         System.out.println("  Difficulty: " + player.getDifficultySlogan());
+        System.out.println("  Health: " + player.health);
         System.out.println("  Max Health: " + player.getMaxHealth());
+        System.out.println("  Respawn: " + player.isRespawn());
     }
 }

@@ -2,17 +2,18 @@ package Entitys;
 
 import java.util.ArrayList;
 
-public class Player extends Entity {
+public class Player {
     public ArrayList<String> weapon;
     public ArrayList<String> enchantments;
     public int health;
+    private String name;
     private int maxHealth;
     private int regenerationRate;
     private String difficulty;
     private int difficultyCode;
     private String difficultySlogan;
     private double enemyDamageMultiplier;
-    private boolean respawn;
+    private boolean noRespawn;
 
     public Player() {}
 
@@ -25,7 +26,7 @@ public class Player extends Entity {
             int difficultyCode,
             String difficultySlogan,
             double enemyDamageMultiplier,
-            boolean respawn
+            boolean noRespawn
     ) {
         this.weapon = weapon;
         this.enchantments = enchantments;
@@ -34,8 +35,9 @@ public class Player extends Entity {
         this.difficulty = difficulty;
         this.difficultyCode = difficultyCode;
         this.difficultySlogan = difficultySlogan;
-        this.respawn = respawn;
+        this.noRespawn = noRespawn;
         this.health = health;
+        this.maxHealth = health;
     }
 
     public void configure(String name) {
@@ -43,8 +45,16 @@ public class Player extends Entity {
         this.maxHealth = this.health;
     }
 
+    public void configure() {
+        this.maxHealth = this.health;
+    }
+
+    public boolean isNoRespawn() {
+        return noRespawn;
+    }
+
     public boolean isRespawn() {
-        return respawn;
+        return !noRespawn;
     }
 
     public String getDifficultySlogan() {
@@ -103,5 +113,9 @@ public class Player extends Entity {
 
     public void setWeapon(ArrayList<String> weapon) {
         this.weapon = weapon;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -4,7 +4,8 @@
   "difficultyCode": 5,
   "name" : "Real Man",
   "health": 800,
+  "regenerationRate": 10,
   "enemyDamageMultiplier": 5,
   "weapon": ["Sword"],
-  "respawn": false
+  "noRespawn": true
 }

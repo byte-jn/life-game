@@ -4,6 +4,7 @@
   "difficultyCode": 4,
   "name" : "Terror",
   "health": 1000,
+  "regenerationRate": 10,
   "enemyDamageMultiplier": 2,
   "weapon": ["Sword"]
 }

@@ -1,5 +1,7 @@
 {
   "name": "skeleton",
   "health": 80,
+  "maxHealth": 100,
+  "regenerationRate": 10,
   "weapon": ["Bow"]
 }

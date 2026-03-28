@@ -3,6 +3,7 @@
   "difficulty": "easy",
   "difficultyCode": 2,
   "health": 1000,
+  "regenerationRate": 10,
   "enemyDamageMultiplier": 0.9,
   "weapon": ["Sword"]
 }
