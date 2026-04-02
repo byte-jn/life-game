@@ -7,6 +7,7 @@ When the Python script is started, the terminal opens, and a story about the her
 ### Feature
 
 #### Converting to Geman "Umlauten"
+```
 (Ae) = Ä
 (ae) = ä
 (Oe) = Ö
@@ -15,5 +16,6 @@ When the Python script is started, the terminal opens, and a story about the her
 (ue) = Ü
 (sz) = ß
 "(Sz) = ẞ"
+```
 
 enhanced Successor is following...
