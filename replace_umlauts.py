@@ -8,6 +8,7 @@ def replace_umlauts(data):
             .replace("(Ue)", "Ü")
             .replace("(ue)", "ü")
             .replace("(sz)", "ß")
+            .replace("(Sz)", "ẞ")
         )
     elif isinstance(data, dict):
         for key, value in data.items():
