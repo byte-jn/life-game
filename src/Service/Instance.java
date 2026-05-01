@@ -10,7 +10,7 @@ import Entitys.Player;
 import java.util.List;
 import java.util.Scanner;
 
-public class Construct {
+public class Instance {
     public final List<MobEntity> mobs;
     public final List<Weapon> weapons;
     public final List<Enchantment> enchantments;
@@ -19,7 +19,7 @@ public class Construct {
     public Player player;
     public final Scanner scanner = new Scanner(System.in);
 
-    public Construct() throws Exception {
+    public Instance() throws Exception {
         mobs = EntityRepository.getMobEntities();
         weapons = EntityRepository.getWeapons();
         enchantments = EntityRepository.getEnchantments();

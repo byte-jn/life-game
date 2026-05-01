@@ -1,4 +1,4 @@
-import Service.Construct;
+import Service.Instance;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,8 +11,8 @@ public class Main {
     }
 
     private static void run() throws Exception {
-        Construct construct = new Construct();
+        Instance instance = new Instance();
 
-        construct.testAndPrintEntities();
+        instance.testAndPrintEntities();
     }
 }
