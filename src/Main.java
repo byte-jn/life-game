@@ -13,6 +13,6 @@ public class Main {
     private static void run() throws Exception {
         Instance instance = new Instance();
 
-        instance.testAndPrintEntities();
+        instance.printAllEntities();
     }
 }
