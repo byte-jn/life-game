@@ -3,11 +3,11 @@ package Entitys;
 public class Event {
     private String name;
     private String description;
-    private String effect;
+    private EventEffect effect;
 
     public Event() {}
 
-    public Event(String name, String description, String effect) {
+    public Event(String name, String description, EventEffect effect) {
         this.name = name;
         this.description = description;
         this.effect = effect;
@@ -21,8 +21,7 @@ public class Event {
         return description;
     }
 
-    public String getEffect() {
+    public EventEffect getEffect() {
         return effect;
     }
 }
-

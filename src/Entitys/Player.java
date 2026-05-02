@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Player {
     public ArrayList<String> weapon;
     public ArrayList<String> enchantments;
+    public ArrayList<String> items;
+    public ArrayList<String> infos;
     public int health;
     private String name;
     private int maxHealth;
@@ -20,6 +22,8 @@ public class Player {
     public Player(
             ArrayList<String> weapon,
             ArrayList<String> enchantments,
+            ArrayList<String> items,
+            ArrayList<String> infos,
             int health,
             int regenerationRate,
             String difficulty,
@@ -30,6 +34,8 @@ public class Player {
     ) {
         this.weapon = weapon;
         this.enchantments = enchantments;
+        this.items = items;
+        this.infos = infos;
         this.enemyDamageMultiplier = enemyDamageMultiplier;
         this.regenerationRate = regenerationRate;
         this.difficulty = difficulty;
@@ -105,6 +111,22 @@ public class Player {
 
     public void setEnchantments(ArrayList<String> enchantments) {
         this.enchantments = enchantments;
+    }
+
+    public ArrayList<String> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<String> items) {
+        this.items = items;
+    }
+
+    public ArrayList<String> getInfos() {
+        return infos;
+    }
+
+    public void setInfos(ArrayList<String> infos) {
+        this.infos = infos;
     }
 
     public ArrayList<String> getWeapon() {

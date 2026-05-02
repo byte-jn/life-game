@@ -1,29 +1,29 @@
 package Service;
 
-import Entitys.Weapon;
-import Entitys.Enchantment;
-import Entitys.MobEntity;
-import Entitys.Location;
-import Entitys.Event;
-import Entitys.Player;
+import Entitys.*;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static Service.MinorFunction.*;
 
 public class Instance {
-    public final List<MobEntity> mobs;
-    public final List<Weapon> weapons;
-    public final List<Enchantment> enchantments;
-    public final List<Location> locations;
-    public final List<Event> events;
-    public final List<Player> players;
-    public Player player;
+    private final List<MobEntity> mobs;
+    private final List<Weapon> weapons;
+    private final List<Enchantment> enchantments;
+    private final List<Item> items;
+    private final List<Info> infos;
+    private final List<Location> locations;
+    private final List<Event> events;
+    private final List<Player> players;
+    private Player player;
 
     public Instance() throws Exception {
         mobs = EntityRepository.getMobEntities();
         weapons = EntityRepository.getWeapons();
         enchantments = EntityRepository.getEnchantments();
+        items = EntityRepository.getItems();
+        infos = EntityRepository.getInfos();
         locations = EntityRepository.getLocations();
         events = EntityRepository.getEvents();
         players = EntityRepository.getPlayers();
@@ -52,6 +52,20 @@ public class Instance {
             System.out.println("  Name: " + enchantment.getName());
             System.out.println("-----------------------------------");
         }
+        System.out.println("Items:");
+        for (Item item : items) {
+            System.out.println("  Name: " + item.getName());
+            System.out.println("    Description: " + item.getDescription());
+            System.out.println("    Group: " + item.getGroup());
+            System.out.println("-----------------------------------");
+        }
+        System.out.println("Infos:");
+        for (Info info : infos) {
+            System.out.println("  Name: " + info.getName());
+            System.out.println("    Description: " + info.getDescription());
+            System.out.println("    Group: " + info.getGroup());
+            System.out.println("-----------------------------------");
+        }
         System.out.println("Locations:");
         for (Location location : locations) {
             System.out.println("  Name: " + location.getName());
@@ -63,7 +77,7 @@ public class Instance {
         for (Event event : events) {
             System.out.println("  Name: " + event.getName());
             System.out.println("    Description: " + event.getDescription());
-            System.out.println("    Effect: " + event.getEffect());
+            System.out.println("    Effect: " + event.getEffect().getName());
             System.out.println("-----------------------------------");
         }
         System.out.println("Difficulties:");
@@ -82,6 +96,8 @@ public class Instance {
             System.out.println("  Difficulty: " + player.getDifficultySlogan());
             System.out.println("  Health: " + player.health);
             System.out.println("  Max Health: " + player.getMaxHealth());
+            System.out.println("  Items: " + player.getItems());
+            System.out.println("  Infos: " + player.getInfos());
             System.out.println("  Respawn: " + player.isRespawn());
             System.out.println("-----------------------------------");
         }
@@ -89,21 +105,22 @@ public class Instance {
 
     /**
      * Lets you chose Player Difficulty
-     * @return Player
      */
-    public Player chosePlayerDifficulty() {
-        StringBuilder message = new StringBuilder("Chose one of the difficulties:" + "\n");
-        for (Player player: players) {
-            message.append(" - ").append(player.getDifficultySlogan()).append(" ( ").append(player.getDifficulty()).append(" ) ").append(player.getDifficultyCode()).append("\n");
-        }
-        Integer difficulty = parseInt(getInput(message.toString()));
-        if (difficulty == null) return players.getFirst();
-        for (Player player : players) {
-            if (player.getDifficultyCode() == difficulty) {
-                return player;
+    public void chosePlayerDifficulty() {
+        while (true) {
+            StringBuilder message = new StringBuilder("Chose one of the difficulties:" + "\n");
+            for (Player player : players) {
+                message.append(" - ").append(player.getDifficultySlogan()).append(" ( ").append(player.getDifficulty()).append(" ) ").append(player.getDifficultyCode()).append("\n");
             }
+            int difficulty = getInputInt(message.toString());
+            for (Player player : this.players) {
+                if (player.getDifficultyCode() == difficulty) {
+                    this.player = player;
+                    return;
+                }
+            }
+            System.out.println("Player could not be set correctly, try again");
         }
-        return null;
     }
 
     /**
@@ -125,7 +142,68 @@ public class Instance {
         player.configure(name);
     }
 
+    /**
+     * Wander around function, to get a random location displayed and an events following an effect on the player
+     */
     public void wanderAround() {
-        // TODO: implement it
+        if (player == null) {
+            System.out.println("No player is configured yet.");
+            return;
+        }
+
+        if (locations.isEmpty()) {
+            System.out.println("There are no locations to wander around in.");
+            return;
+        }
+
+        Location location = locations.get(ThreadLocalRandom.current().nextInt(locations.size()));
+        System.out.println("You wander around and arrive at " + location.getName() + ".");
+        System.out.println(location.getDescription());
+
+        processEvent(location.getPossibleEvents());
+    }
+
+    /**
+     * Displays a random event. And property process effect
+     * @param possibleEvents List<String>
+     */
+    private void processEvent(List<String> possibleEvents) {
+        if (possibleEvents == null || possibleEvents.isEmpty()) {
+            System.out.println("Nothing happens here.");
+            return;
+        }
+        try {
+            String eventName = possibleEvents.get(ThreadLocalRandom.current().nextInt(possibleEvents.size() * 2));
+
+            Event event = null;
+            for (Event candidate : events) {
+                if (candidate.getName().equals(eventName)) {
+                    event = candidate;
+                    break;
+                }
+            }
+
+            if (event == null) {
+                System.out.println("Something feels off, but nothing notable happens.");
+                return;
+            }
+            System.out.println(event.getDescription());
+
+            processEffect(event.getEffect());
+        } catch (Exception _) {
+            System.out.println("Something feels off, but nothing notable happens.");
+        }
+    }
+
+    /**
+     * Processes Effect for player
+     * @param effect EventEffect
+     */
+    private void processEffect(EventEffect effect) {
+        if (effect == null) {
+            return;
+        }
+        System.out.println("Effect: " + effect.getName() + " (" + effect.getValue() + ")");
+        this.player = effect.processes(this.player);
     }
 }

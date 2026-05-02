@@ -2,6 +2,8 @@ package Service;
 
 import Entitys.Weapon;
 import Entitys.Enchantment;
+import Entitys.Item;
+import Entitys.Info;
 import Entitys.MobEntity;
 import Entitys.Location;
 import Entitys.Event;
@@ -69,6 +71,44 @@ public class EntityRepository {
             }
         }
         return enchantments;
+    }
+
+    public static List<Item> getItems() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        File folder = new File("resources/data/items");
+
+        if (!folder.exists()) {
+            throw new Exception("No Folder can be found");
+        }
+
+        List<Item> items = new ArrayList<>();
+
+        for (File file : Objects.requireNonNull(folder.listFiles())) {
+            if (file.getName().endsWith(".json")) {
+                Item item = mapper.readValue(file, Item.class);
+                items.add(item);
+            }
+        }
+        return items;
+    }
+
+    public static List<Info> getInfos() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        File folder = new File("resources/data/infos");
+
+        if (!folder.exists()) {
+            throw new Exception("No Folder can be found");
+        }
+
+        List<Info> infos = new ArrayList<>();
+
+        for (File file : Objects.requireNonNull(folder.listFiles())) {
+            if (file.getName().endsWith(".json")) {
+                Info info = mapper.readValue(file, Info.class);
+                infos.add(info);
+            }
+        }
+        return infos;
     }
 
     public static List<Location> getLocations() throws Exception {

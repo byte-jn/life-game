@@ -14,5 +14,8 @@ public class Main {
         Instance instance = new Instance();
 
         instance.printAllEntities();
+        instance.chosePlayerDifficulty();
+        instance.configurePlayerName();
+        instance.wanderAround();
     }
 }

@@ -35,4 +35,21 @@ public class MinorFunction {
             return null;
         }
     }
+
+    /**
+     * Ask for a int value and ends when value is given properly
+     * @param message String
+     * @return int
+     */
+    public static int getInputInt(String message) {
+        while (true) {
+            Integer i = parseInt(getInput(message));
+
+            if (i != null) {
+                return i;
+            }
+
+            System.out.println("Value could not be processed, please enter a numeric character");
+        }
+    }
 }
