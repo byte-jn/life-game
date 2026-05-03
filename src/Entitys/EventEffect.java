@@ -10,6 +10,7 @@ public class EventEffect {
     private String name;
     private int value;
     private String group;
+    private int count = 1;
 
     public EventEffect() {}
 
@@ -24,6 +25,14 @@ public class EventEffect {
 
     public int getValue() {
         return value;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = Math.max(1, count);
     }
 
     public String getGroup() {
@@ -69,7 +78,7 @@ public class EventEffect {
             }
 
             Item item = filteredItems.get(ThreadLocalRandom.current().nextInt(filteredItems.size()));
-            ensureItems(player).add(item);
+            addOrIncreaseItem(player, item);
             System.out.println("You found an item: " + item.getName());
             if (item.getDescription() != null && !item.getDescription().isEmpty()) {
                 System.out.println(item.getDescription());
@@ -96,7 +105,7 @@ public class EventEffect {
             }
 
             Info info = filteredInfos.get(ThreadLocalRandom.current().nextInt(filteredInfos.size()));
-            ensureInfos(player).add(info);
+            addOrIncreaseInfo(player, info);
             System.out.println("You learned some info: " + info.getName());
             if (info.getDescription() != null && !info.getDescription().isEmpty()) {
                 System.out.println(info.getDescription());
@@ -146,5 +155,35 @@ public class EventEffect {
             player.setInfos(new ArrayList<>());
         }
         return player.getInfos();
+    }
+
+    private void addOrIncreaseItem(Player player, Item item) {
+        ArrayList<Item> inventory = ensureItems(player);
+        for (Item owned : inventory) {
+            if (owned.getName() != null && owned.getName().equals(item.getName())) {
+                owned.increaseCount(item.getCount());
+                return;
+            }
+        }
+        inventory.add(copyItem(item));
+    }
+
+    private void addOrIncreaseInfo(Player player, Info info) {
+        ArrayList<Info> inventory = ensureInfos(player);
+        for (Info owned : inventory) {
+            if (owned.getName() != null && owned.getName().equals(info.getName())) {
+                owned.increaseCount(info.getCount());
+                return;
+            }
+        }
+        inventory.add(copyInfo(info));
+    }
+
+    private Item copyItem(Item item) {
+        return new Item(item.getName(), item.getDescription(), item.getGroup(), item.getCount());
+    }
+
+    private Info copyInfo(Info info) {
+        return new Info(info.getName(), info.getDescription(), info.getGroup(), info.getCount());
     }
 }

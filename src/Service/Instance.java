@@ -45,6 +45,7 @@ public class Instance {
         System.out.println("Weapons:");
         for (Weapon weapon : weapons) {
             System.out.println("  Name: " + weapon.getName());
+            System.out.println("    Count: " + weapon.getCount());
             System.out.println("    Damage: " + weapon.getDamage());
             System.out.println("    Durability: " + weapon.getDurability());
             System.out.println("    Cooldown: " + weapon.getCoolDown());
@@ -53,6 +54,7 @@ public class Instance {
         System.out.println("Enchantments:");
         for (Enchantment enchantment : enchantments) {
             System.out.println("  Name: " + enchantment.getName());
+            System.out.println("    Count: " + enchantment.getCount());
             System.out.println("    Description: " + enchantment.getDescription());
             System.out.println("    Change: " + enchantment.getChange());
             System.out.println("-----------------------------------");
@@ -60,6 +62,7 @@ public class Instance {
         System.out.println("Items:");
         for (Item item : items) {
             System.out.println("  Name: " + item.getName());
+            System.out.println("    Count: " + item.getCount());
             System.out.println("    Description: " + item.getDescription());
             System.out.println("    Group: " + item.getGroup());
             System.out.println("-----------------------------------");
@@ -67,6 +70,7 @@ public class Instance {
         System.out.println("Infos:");
         for (Info info : infos) {
             System.out.println("  Name: " + info.getName());
+            System.out.println("    Count: " + info.getCount());
             System.out.println("    Description: " + info.getDescription());
             System.out.println("    Group: " + info.getGroup());
             System.out.println("-----------------------------------");
@@ -83,6 +87,7 @@ public class Instance {
             System.out.println("  Name: " + event.getName());
             System.out.println("    Description: " + event.getDescription());
             System.out.println("    Effect: " + event.getEffect().getName());
+            System.out.println("    Effect Count: " + event.getEffect().getCount());
             System.out.println("-----------------------------------");
         }
         System.out.println("Difficulties:");

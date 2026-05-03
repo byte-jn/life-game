@@ -179,14 +179,24 @@ public class Player {
     }
 
     public void validateAlive() {
-        if (health <= 0 && noRespawn && hasTotemOfUndying()) {
-            dead = true;
+        if (health > 0) {
+            return;
         }
+        if (hasRevivalTool()) {
+            health = (int) Math.round((double) maxHealth * 1.12);
+        }
+        if (!noRespawn) {
+            health = (int) Math.round((double) maxHealth * 0.12);
+        }
+        dead = true;
     }
 
-    private boolean hasTotemOfUndying() {
-        // TODO check if some item has the effect to rescue someone form death.
-        return false;
+    private boolean hasRevivalTool() {
+        Item totem = findItemByGroup(items, "revival_tools");
+        if (totem == null) {
+            return false;
+        }
+        return totem.getCount() > 0;
     }
 
     public boolean getAlive() {
@@ -318,6 +328,15 @@ public class Player {
     private Item findItemByName(List<Item> items, String itemName) {
         for (Item candidate : items) {
             if (Objects.equals(candidate.getName(), itemName)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private Item findItemByGroup(List<Item> items, String itemGroupName) {
+        for (Item candidate : items) {
+            if (Objects.equals(candidate.getGroup(), itemGroupName) && candidate.getCount() > 0) {
                 return candidate;
             }
         }
