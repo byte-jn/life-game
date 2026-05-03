@@ -24,4 +24,9 @@ public class Enchantment {
     public ItemValues getChange() {
         return change;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

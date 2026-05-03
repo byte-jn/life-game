@@ -30,4 +30,9 @@ public class Weapon {
     public double getCoolDown() {
         return coolDown;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

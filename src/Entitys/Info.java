@@ -24,4 +24,9 @@ public class Info {
     public String getGroup() {
         return group;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -45,11 +45,16 @@ public class Instance {
         System.out.println("Weapons:");
         for (Weapon weapon : weapons) {
             System.out.println("  Name: " + weapon.getName());
+            System.out.println("    Damage: " + weapon.getDamage());
+            System.out.println("    Durability: " + weapon.getDurability());
+            System.out.println("    Cooldown: " + weapon.getCoolDown());
             System.out.println("-----------------------------------");
         }
         System.out.println("Enchantments:");
         for (Enchantment enchantment : enchantments) {
             System.out.println("  Name: " + enchantment.getName());
+            System.out.println("    Description: " + enchantment.getDescription());
+            System.out.println("    Change: " + enchantment.getChange());
             System.out.println("-----------------------------------");
         }
         System.out.println("Items:");
@@ -87,6 +92,10 @@ public class Instance {
             System.out.println("  Health: " + player1.health);
             System.out.println("  Max Health: " + player1.getMaxHealth());
             System.out.println("  Respawn: " + player1.isRespawn());
+            System.out.println("  Weapon: " + player1.getWeapon());
+            System.out.println("  Enchantments: " + player1.getEnchantments());
+            System.out.println("  Items: " + player1.getItems());
+            System.out.println("  Infos: " + player1.getInfos());
             System.out.println("-----------------------------------");
         }
 
@@ -96,6 +105,9 @@ public class Instance {
             System.out.println("  Difficulty: " + player.getDifficultySlogan());
             System.out.println("  Health: " + player.health);
             System.out.println("  Max Health: " + player.getMaxHealth());
+            System.out.println("  Primary Weapon: " + player.primaryWeapon);
+            System.out.println("  Weapons: " + player.getWeapon());
+            System.out.println("  Enchantments: " + player.getEnchantments());
             System.out.println("  Items: " + player.getItems());
             System.out.println("  Infos: " + player.getInfos());
             System.out.println("  Respawn: " + player.isRespawn());
@@ -116,6 +128,9 @@ public class Instance {
         System.out.println("  Difficulty: " + player.getDifficultySlogan());
         System.out.println("  Health: " + player.health);
         System.out.println("  Max Health: " + player.getMaxHealth());
+        System.out.println("  Primary Weapon: " + player.primaryWeapon);
+        System.out.println("  Weapons: " + player.getWeapon());
+        System.out.println("  Enchantments: " + player.getEnchantments());
         System.out.println("  Items: " + player.getItems());
         System.out.println("  Infos: " + player.getInfos());
         System.out.println("  Respawn: " + player.isRespawn());

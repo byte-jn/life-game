@@ -1,15 +1,22 @@
 package Entitys;
 
 import Service.EntityRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
-    public ArrayList<String> weapon;
-    public ArrayList<String> enchantments;
-    public ArrayList<String> items;
-    public ArrayList<String> infos;
+    @JsonIgnore
+    public ArrayList<Weapon> weapon;
+    @JsonIgnore
+    public ArrayList<Enchantment> enchantments;
+    @JsonIgnore
+    public ArrayList<Item> items;
+    @JsonIgnore
+    public ArrayList<Info> infos;
     public Weapon primaryWeapon;
     public int health;
     private String name;
@@ -20,15 +27,15 @@ public class Player {
     private String difficultySlogan;
     private double enemyDamageMultiplier;
     private boolean noRespawn;
-    private boolean alive;
+    private boolean dead;
 
     public Player() {}
 
     public Player(
-            ArrayList<String> weapon,
-            ArrayList<String> enchantments,
-            ArrayList<String> items,
-            ArrayList<String> infos,
+            ArrayList<Weapon> weapon,
+            ArrayList<Enchantment> enchantments,
+            ArrayList<Item> items,
+            ArrayList<Info> infos,
             int health,
             int regenerationRate,
             String difficulty,
@@ -49,7 +56,7 @@ public class Player {
         this.noRespawn = noRespawn;
         this.health = health;
         this.maxHealth = health;
-        this.alive = true;
+        this.dead = false;
     }
 
     public void configure(String name) {
@@ -111,36 +118,60 @@ public class Player {
         this.enemyDamageMultiplier = enemyDamageMultiplier;
     }
 
-    public ArrayList<String> getEnchantments() {
+    public ArrayList<Enchantment> getEnchantments() {
         return enchantments;
     }
 
-    public void setEnchantments(ArrayList<String> enchantments) {
+    @JsonIgnore
+    public void setEnchantments(ArrayList<Enchantment> enchantments) {
         this.enchantments = enchantments;
     }
 
-    public ArrayList<String> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<String> items) {
+    @JsonIgnore
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public ArrayList<String> getInfos() {
+    public ArrayList<Info> getInfos() {
         return infos;
     }
 
-    public void setInfos(ArrayList<String> infos) {
+    @JsonIgnore
+    public void setInfos(ArrayList<Info> infos) {
         this.infos = infos;
     }
 
-    public ArrayList<String> getWeapon() {
+    public ArrayList<Weapon> getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(ArrayList<String> weapon) {
+    @JsonIgnore
+    public void setWeapon(ArrayList<Weapon> weapon) {
         this.weapon = weapon;
+    }
+
+    @JsonSetter("weapon")
+    public void setWeaponNames(List<?> weaponEntries) {
+        this.weapon = resolveWeapons(weaponEntries);
+    }
+
+    @JsonSetter("enchantments")
+    public void setEnchantmentsNames(List<?> enchantmentEntries) {
+        this.enchantments = resolveEnchantments(enchantmentEntries);
+    }
+
+    @JsonSetter("items")
+    public void setItemsNames(List<?> itemEntries) {
+        this.items = resolveItems(itemEntries);
+    }
+
+    @JsonSetter("infos")
+    public void setInfosNames(List<?> infoEntries) {
+        this.infos = resolveInfos(infoEntries);
     }
 
     public String getName() {
@@ -149,7 +180,7 @@ public class Player {
 
     public void validateAlive() {
         if (health <= 0 && noRespawn && hasTotemOfUndying()) {
-            alive = false;
+            dead = true;
         }
     }
 
@@ -159,6 +190,146 @@ public class Player {
     }
 
     public boolean getAlive() {
-        return alive;
+        return !dead;
+    }
+
+    private ArrayList<Weapon> resolveWeapons(List<?> weaponEntries) {
+        ArrayList<Weapon> resolvedWeapons = new ArrayList<>();
+        if (weaponEntries == null) {
+            return resolvedWeapons;
+        }
+
+        try {
+            List<Weapon> availableWeapons = EntityRepository.getWeapons();
+            for (Object entry : weaponEntries) {
+                if (entry instanceof Weapon weapon) {
+                    resolvedWeapons.add(weapon);
+                    continue;
+                }
+                if (entry instanceof String weaponName) {
+                    Weapon weapon = findWeaponByName(availableWeapons, weaponName);
+                    if (weapon != null) {
+                        resolvedWeapons.add(weapon);
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+            // Keep the player usable even if the repository cannot be loaded.
+        }
+        return resolvedWeapons;
+    }
+
+    private ArrayList<Enchantment> resolveEnchantments(List<?> enchantmentEntries) {
+        ArrayList<Enchantment> resolvedEnchantments = new ArrayList<>();
+        if (enchantmentEntries == null) {
+            return resolvedEnchantments;
+        }
+
+        try {
+            List<Enchantment> availableEnchantments = EntityRepository.getEnchantments();
+            for (Object entry : enchantmentEntries) {
+                if (entry instanceof Enchantment enchantment) {
+                    resolvedEnchantments.add(enchantment);
+                    continue;
+                }
+                if (entry instanceof String enchantmentName) {
+                    Enchantment enchantment = findEnchantmentByName(availableEnchantments, enchantmentName);
+                    if (enchantment != null) {
+                        resolvedEnchantments.add(enchantment);
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+            // Keep the player usable even if the repository cannot be loaded.
+        }
+        return resolvedEnchantments;
+    }
+
+    private ArrayList<Item> resolveItems(List<?> itemEntries) {
+        ArrayList<Item> resolvedItems = new ArrayList<>();
+        if (itemEntries == null) {
+            return resolvedItems;
+        }
+
+        try {
+            List<Item> availableItems = EntityRepository.getItems();
+            for (Object entry : itemEntries) {
+                if (entry instanceof Item item) {
+                    resolvedItems.add(item);
+                    continue;
+                }
+                if (entry instanceof String itemName) {
+                    Item item = findItemByName(availableItems, itemName);
+                    if (item != null) {
+                        resolvedItems.add(item);
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+            // Keep the player usable even if the repository cannot be loaded.
+        }
+        return resolvedItems;
+    }
+
+    private ArrayList<Info> resolveInfos(List<?> infoEntries) {
+        ArrayList<Info> resolvedInfos = new ArrayList<>();
+        if (infoEntries == null) {
+            return resolvedInfos;
+        }
+
+        try {
+            List<Info> availableInfos = EntityRepository.getInfos();
+            for (Object entry : infoEntries) {
+                if (entry instanceof Info info) {
+                    resolvedInfos.add(info);
+                    continue;
+                }
+                if (entry instanceof String infoName) {
+                    Info info = findInfoByName(availableInfos, infoName);
+                    if (info != null) {
+                        resolvedInfos.add(info);
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+            // Keep the player usable even if the repository cannot be loaded.
+        }
+        return resolvedInfos;
+    }
+
+    private Weapon findWeaponByName(List<Weapon> weapons, String weaponName) {
+        for (Weapon candidate : weapons) {
+            if (Objects.equals(candidate.getName(), weaponName)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private Enchantment findEnchantmentByName(List<Enchantment> enchantments, String enchantmentName) {
+        for (Enchantment candidate : enchantments) {
+            if (Objects.equals(candidate.getName(), enchantmentName)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private Item findItemByName(List<Item> items, String itemName) {
+        for (Item candidate : items) {
+            if (Objects.equals(candidate.getName(), itemName)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    private Info findInfoByName(List<Info> infos, String infoName) {
+        for (Info candidate : infos) {
+            if (Objects.equals(candidate.getName(), infoName)) {
+                return candidate;
+            }
+        }
+        return null;
     }
 }

@@ -69,7 +69,7 @@ public class EventEffect {
             }
 
             Item item = filteredItems.get(ThreadLocalRandom.current().nextInt(filteredItems.size()));
-            ensureItems(player).add(item.getName());
+            ensureItems(player).add(item);
             System.out.println("You found an item: " + item.getName());
             if (item.getDescription() != null && !item.getDescription().isEmpty()) {
                 System.out.println(item.getDescription());
@@ -96,7 +96,7 @@ public class EventEffect {
             }
 
             Info info = filteredInfos.get(ThreadLocalRandom.current().nextInt(filteredInfos.size()));
-            ensureInfos(player).add(info.getName());
+            ensureInfos(player).add(info);
             System.out.println("You learned some info: " + info.getName());
             if (info.getDescription() != null && !info.getDescription().isEmpty()) {
                 System.out.println(info.getDescription());
@@ -134,14 +134,14 @@ public class EventEffect {
         return filteredInfos.isEmpty() ? infos : filteredInfos;
     }
 
-    private ArrayList<String> ensureItems(Player player) {
+    private ArrayList<Item> ensureItems(Player player) {
         if (player.getItems() == null) {
             player.setItems(new ArrayList<>());
         }
         return player.getItems();
     }
 
-    private ArrayList<String> ensureInfos(Player player) {
+    private ArrayList<Info> ensureInfos(Player player) {
         if (player.getInfos() == null) {
             player.setInfos(new ArrayList<>());
         }
