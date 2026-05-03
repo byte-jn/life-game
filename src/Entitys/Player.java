@@ -1,12 +1,16 @@
 package Entitys;
 
+import Service.EntityRepository;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     public ArrayList<String> weapon;
     public ArrayList<String> enchantments;
     public ArrayList<String> items;
     public ArrayList<String> infos;
+    public Weapon primaryWeapon;
     public int health;
     private String name;
     private int maxHealth;
@@ -16,6 +20,7 @@ public class Player {
     private String difficultySlogan;
     private double enemyDamageMultiplier;
     private boolean noRespawn;
+    private boolean alive;
 
     public Player() {}
 
@@ -44,6 +49,7 @@ public class Player {
         this.noRespawn = noRespawn;
         this.health = health;
         this.maxHealth = health;
+        this.alive = true;
     }
 
     public void configure(String name) {
@@ -139,5 +145,20 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void validateAlive() {
+        if (health <= 0 && noRespawn && hasTotemOfUndying()) {
+            alive = false;
+        }
+    }
+
+    private boolean hasTotemOfUndying() {
+        // TODO check if some item has the effect to rescue someone form death.
+        return false;
+    }
+
+    public boolean getAlive() {
+        return alive;
     }
 }

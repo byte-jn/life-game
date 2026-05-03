@@ -6,16 +6,19 @@ public class Main {
             run();
         } catch (Exception exception) {
             System.out.println("Error: " + exception.getMessage());
-            System.exit(0);
+            System.exit(1);
         }
+        System.exit(0);
     }
 
     private static void run() throws Exception {
         Instance instance = new Instance();
 
-        instance.printAllEntities();
         instance.chosePlayerDifficulty();
         instance.configurePlayerName();
-        instance.wanderAround();
+        while (instance.playerAlive()) {
+            instance.wanderAround();
+            instance.printPlayerInfo();
+        }
     }
 }

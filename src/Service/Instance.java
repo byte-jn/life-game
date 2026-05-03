@@ -104,6 +104,26 @@ public class Instance {
     }
 
     /**
+     * Prints All Entities in detail
+     */
+    public void printPlayerInfo() {
+        if (player == null) {
+            System.out.println("no Player defined");
+            return;
+        }
+        System.out.println("Current Player:");
+        System.out.println("  Name: " + player.getName());
+        System.out.println("  Difficulty: " + player.getDifficultySlogan());
+        System.out.println("  Health: " + player.health);
+        System.out.println("  Max Health: " + player.getMaxHealth());
+        System.out.println("  Items: " + player.getItems());
+        System.out.println("  Infos: " + player.getInfos());
+        System.out.println("  Respawn: " + player.isRespawn());
+        System.out.println("-----------------------------------");
+
+    }
+
+    /**
      * Lets you chose Player Difficulty
      */
     public void chosePlayerDifficulty() {
@@ -205,5 +225,10 @@ public class Instance {
         }
         System.out.println("Effect: " + effect.getName() + " (" + effect.getValue() + ")");
         this.player = effect.processes(this.player);
+    }
+
+    public boolean playerAlive() {
+        player.validateAlive();
+        return player.getAlive();
     }
 }
