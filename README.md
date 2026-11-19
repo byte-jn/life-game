@@ -1,21 +1,21 @@
 # life-game
-A generation of a story about your hero in the terminal using Python.
 
-## Documentation
-When the Python script is started, the terminal opens, and a story about the hero is generated. It is presented only in text form. There are also battles and different types of weapons. Ice is an auto-battler, which means you can only watch what Harald does. You can also add new locations and people in the files enemy.json and location.json. Umlauts are possible. No letters with specific starting letters are allowed.
+A text-based hero story generated in the terminal, with battles, weapons, enemies and locations. The game is an auto-battler: you watch what the hero does.
 
-### Feature
+The project exists in two versions:
 
-#### Converting to Geman "Umlauten"
+- `python/` – the original version (2024). Run `python LifeGame.py` inside the folder. New locations and enemies can be added in `enemy.json` and `locations.json`.
+- `java/` – a newer rewrite (2026, in progress, formerly its own repo `life-game-java`). Entities, events, items, enchantments and difficulty levels are loaded from JSON files in `resources/data/`. Libraries (Jackson) are in `lib/`.
+
+## Umlauts (Python version)
+
 ```
 (Ae) = Ä
 (ae) = ä
 (Oe) = Ö
 (oe) = ö
 (Ue) = Ü
-(ue) = Ü
+(ue) = ü
 (sz) = ß
-"(Sz) = ẞ"
+(Sz) = ẞ
 ```
-
-enhanced Successor is following...
