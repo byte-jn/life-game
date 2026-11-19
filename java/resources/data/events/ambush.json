@@ -1,0 +1,9 @@
+{
+  "name": "ambush",
+  "description": "You are ambushed by a group of bandits!",
+  "effect": {
+    "name": "lose_health",
+    "value": 10,
+    "group": "danger"
+  }
+}

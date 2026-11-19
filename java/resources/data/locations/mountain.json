@@ -1,0 +1,6 @@
+{
+  "name": "mountain",
+  "description": "A high mountain with dangerous cliffs and rare minerals.",
+  "possibleEvents": ["ambush", "find_treasure"]
+}
+

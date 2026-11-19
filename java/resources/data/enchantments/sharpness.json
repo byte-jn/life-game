@@ -1,0 +1,10 @@
+{
+  "name": "Sharpness",
+  "description": "hot",
+  "change": {
+    "durabilityIncrease": -5,
+    "damageIncrease": 10,
+    "coolDownIncrease": 0
+  }
+}
+

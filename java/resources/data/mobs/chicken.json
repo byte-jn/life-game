@@ -1,0 +1,7 @@
+{
+  "name": "chicken",
+  "health": 100,
+  "maxHealth": 100,
+  "regenerationRate": 10,
+  "weapon": ["Iron Sword"]
+}

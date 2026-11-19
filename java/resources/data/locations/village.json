@@ -1,0 +1,6 @@
+{
+  "name": "village",
+  "description": "A peaceful village with friendly inhabitants and a market square.",
+  "possibleEvents": ["meet_traveler", "find_treasure"]
+}
+

@@ -1,0 +1,9 @@
+{
+  "name": "meet_traveler",
+  "description": "You meet a friendly traveler who gives you advice.",
+  "effect": {
+    "name": "gain_info",
+    "value": 1,
+    "group": "traveler"
+  }
+}

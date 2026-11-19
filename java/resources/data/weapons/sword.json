@@ -1,0 +1,7 @@
+{
+  "name": "Sword",
+  "durability": 100.0,
+  "damage": 10.0,
+  "coolDown": 1.2
+}
+

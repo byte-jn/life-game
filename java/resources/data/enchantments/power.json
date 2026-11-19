@@ -1,0 +1,10 @@
+{
+  "name": "Power",
+  "description": "stronger arrows",
+  "change": {
+    "durabilityIncrease": 0,
+    "damageIncrease": 20,
+    "coolDownIncrease": 5
+  }
+}
+

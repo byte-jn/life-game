@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DifficultySettings",
+  "type": "object",
+  "properties": {
+    "difficultySlogan": {
+      "type": "string"
+    },
+    "difficulty": {
+      "type": "string"
+    },
+    "difficultyCode": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "health": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "enemyDamageMultiplier": {
+      "type": "number",
+      "minimum": 0
+    },
+    "weapon": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 0
+    },
+    "respawn": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "difficultySlogan",
+    "difficulty",
+    "difficultyCode",
+    "health",
+    "enemyDamageMultiplier",
+    "weapon"
+  ]
+}
